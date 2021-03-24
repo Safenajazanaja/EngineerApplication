@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_work"
+        android:icon="@drawable/ic_baseline_call_24"
+        android:title="จัดการงานแจ้งซ่อมเข้าใหม่" />
+    <item
+        android:id="@+id/nav_history"
+        android:icon="@drawable/ic_baseline_history_toggle_off_24"
+        android:title="ประวัติการทำงาน" />
+    <item
+        android:id="@+id/nav_member"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="จัดข้อมูลสมาชิก" />
+</menu>

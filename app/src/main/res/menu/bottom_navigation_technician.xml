@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/nav_job_you"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="ตารางงาน" />
+    <item
+        android:id="@+id/nav_history_mend"
+        android:icon="@drawable/ic_baseline_history_toggle_off_24"
+        android:title="ประวัติงานซ่อม" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="ข้อมูลส่วนตัว" />
+
+
+</menu>
