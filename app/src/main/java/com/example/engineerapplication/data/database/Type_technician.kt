@@ -1,4 +1,4 @@
-package com.example.easyfix.data.database
+package com.example.engineerapplication.data.database
 
 import org.jetbrains.exposed.sql.Table
 

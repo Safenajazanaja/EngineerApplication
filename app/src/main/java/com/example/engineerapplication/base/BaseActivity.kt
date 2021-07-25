@@ -16,7 +16,7 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder().permitAll().build())
-        val host = "192.168.0.197"
+        val host = "192.168.0.199"
 //        172.20.10.2
 //        192.168.0.197
         val databaseName = "callm"

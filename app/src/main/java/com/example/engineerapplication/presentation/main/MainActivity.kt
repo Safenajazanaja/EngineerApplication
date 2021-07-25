@@ -62,8 +62,8 @@ class MainActivity : BaseActivity() {
                 val selectedFragment: Fragment = when (item.itemId) {
                     R.id.nav_work -> WorkjobFragment()
                     R.id.nav_history -> HistoryFragment()
-                    R.id.nav_member -> MemberFragment()
-                    else -> WorkjobFragment()
+//                    R.id.nav_member -> MemberFragment()
+                    else -> MemberFragment()
                 }
                 replaceFragment(selectedFragment)
                 true
@@ -74,8 +74,7 @@ class MainActivity : BaseActivity() {
             val selectedFragment: Fragment = when (item.itemId) {
                 R.id.nav_job_you -> TablejobFragment()
                 R.id.nav_history_mend -> MendhistoryFragment()
-                R.id.nav_profile -> ProfileFragment()
-                else -> TablejobFragment()
+                else -> ProfileFragment()
             }
             replaceFragment(selectedFragment)
             true

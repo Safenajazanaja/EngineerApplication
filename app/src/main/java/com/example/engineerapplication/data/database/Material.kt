@@ -1,6 +1,5 @@
-package com.example.easyfix.data.database
+package com.example.engineerapplication.data.database
 
-import com.example.easyfix.data.database.Type_technician.autoIncrement
 import org.jetbrains.exposed.sql.Table
 
 object Material:Table("material") {
@@ -8,6 +7,6 @@ object Material:Table("material") {
     val material_name= varchar("material_name",20)
     val price= integer("price")
     override val primaryKey: PrimaryKey?
-        get() = PrimaryKey(Material.material_id, name = "material_id_PK")
+        get() = PrimaryKey(material_id, name = "material_id_PK")
 
 }
