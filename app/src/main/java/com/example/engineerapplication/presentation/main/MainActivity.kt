@@ -10,9 +10,8 @@ import com.example.engineerapplication.R
 import com.example.engineerapplication.base.BaseActivity
 import com.example.engineerapplication.presentation.admin.history.HistoryFragment
 import com.example.engineerapplication.presentation.admin.member.MemberFragment
-import com.example.engineerapplication.presentation.technician.tablejob.TablejobFragment
 import com.example.engineerapplication.presentation.admin.workjob.WorkjobFragment
-import com.example.engineerapplication.presentation.technician.historymend.MendhistoryFragment
+import com.example.engineerapplication.presentation.technician.table.TablejobFragment
 import com.example.engineerapplication.presentation.technician.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -73,7 +72,7 @@ class MainActivity : BaseActivity() {
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             val selectedFragment: Fragment = when (item.itemId) {
                 R.id.nav_job_you -> TablejobFragment()
-                R.id.nav_history_mend -> MendhistoryFragment()
+                R.id.nav_history_mend -> HistoryFragment()
                 else -> ProfileFragment()
             }
             replaceFragment(selectedFragment)

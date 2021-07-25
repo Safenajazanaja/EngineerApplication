@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:columnCount="4"
+    android:rowCount="3">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_columnSpan="4"
+        android:layout_margin="4dp"
+        android:background="@color/black" />
+
+    <TextView
+
+        style="@style/Text.Title"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:text="ชื่อวัสดุ" />
+
+    <TextView
+
+        style="@style/Text.Title"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:text="จำนวน" />
+
+    <TextView
+
+        style="@style/Text.Title"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:text="ราคาต่อหน่วย" />
+
+    <TextView
+
+        style="@style/Text.Title"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:text="ราคา" />
+
+    <View
+        android:layout_height="1dp"
+        android:layout_columnSpan="4"
+        android:layout_margin="4dp"
+        android:background="@color/black" />
+
+
+</GridLayout>

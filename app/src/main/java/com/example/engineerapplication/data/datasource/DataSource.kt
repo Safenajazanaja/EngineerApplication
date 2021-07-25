@@ -2,11 +2,9 @@ package com.example.easyfix.data.datasource
 
 
 import android.util.Log
-import com.example.engineerapplication.data.database.Technician
-import com.example.engineerapplication.data.map.ProfileMap
-import com.example.engineerapplication.data.map.RoleMap
-import com.example.engineerapplication.data.models.ProfileModel
-import com.example.engineerapplication.data.models.RoleModel
+import com.example.engineerapplication.data.database.*
+import com.example.engineerapplication.data.map.*
+import com.example.engineerapplication.data.models.*
 import com.example.engineerapplication.data.request.ImagsRequest
 import com.example.engineerapplication.data.request.LoginRequest
 import com.example.engineerapplication.data.response.LoginResponse
@@ -97,6 +95,51 @@ object DataSource {
         }
 
     }
+
+
+    fun tablejob(userid:Int):List<OrderdetailModel>{
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            (Orderl innerJoin Status)
+                .slice(
+                    Orderl.abode,
+                    Orderl.order_id,
+                    Orderl.repair_list,
+                    Orderl.dateLong,
+                    Orderl.price, //add
+                    Status.status_name
+                )
+                .select { Orderl.id_technician eq userid }
+                .map { TableJobMap.toTableJob(it) }
+        }
+    }
+
+    fun listitem(jobid: Int): List<ListModel> {
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            (Orderl_detail innerJoin Material)
+                .slice(
+                    Material.material_name,
+                    Material.price_material,
+                    Orderl_detail.qty
+                )
+                .select { Orderl_detail.orderl_id eq jobid }
+                .map { ListMap.tolist(it) }
+        }
+
+    }
+
+    fun chekImage(idjob: Int): ImagModel {
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            Orderl.slice(Orderl.image)
+                .select { Orderl.order_id eq idjob }
+                .map { ImageMap.toImage(it) }
+                .single()
+        }
+
+    }
+
 
 }
 
