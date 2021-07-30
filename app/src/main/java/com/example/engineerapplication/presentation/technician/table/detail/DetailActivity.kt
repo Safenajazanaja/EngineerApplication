@@ -1,6 +1,7 @@
 package com.example.engineerapplication.presentation.technician.table.detail
 
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import com.example.engineerapplication.base.BaseActivity
 import com.example.engineerapplication.base.Dru
 import com.example.engineerapplication.base.Dru.loadImageCircle
 import com.example.engineerapplication.data.request.ImagsRequest
+import com.example.engineerapplication.presentation.material.MaterialActivity
 import com.example.loginmvvm.presentation.history.detail.ColumAdapter
 
 import com.google.gson.Gson
@@ -73,6 +75,15 @@ class DetailActivity : BaseActivity() {
         })
 
         viewModel.chekImg(idjob)
+
+        btaddmat.setOnClickListener {
+            val intent=Intent(baseContext, MaterialActivity::class.java).apply {
+                putExtra("orderid", idjob)
+//                val preferences = getSharedPreferences("fileidjob", Context.MODE_PRIVATE)
+//                preferences.edit().putInt("id",idjob).apply()
+            }
+            startActivity(intent)
+        }
 
     }
 

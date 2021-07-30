@@ -12,7 +12,7 @@ import com.example.engineerapplication.presentation.admin.history.HistoryFragmen
 import com.example.engineerapplication.presentation.admin.member.MemberFragment
 import com.example.engineerapplication.presentation.admin.workjob.WorkjobFragment
 import com.example.engineerapplication.presentation.technician.table.TablejobFragment
-import com.example.engineerapplication.presentation.technician.profile.ProfileFragment
+import com.example.engineerapplication.presentation.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 

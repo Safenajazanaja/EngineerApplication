@@ -5,6 +5,8 @@ import android.util.Log
 import com.example.engineerapplication.data.database.*
 import com.example.engineerapplication.data.map.*
 import com.example.engineerapplication.data.models.*
+import com.example.engineerapplication.data.request.AddRequest
+import com.example.engineerapplication.data.request.CkkRequest
 import com.example.engineerapplication.data.request.ImagsRequest
 import com.example.engineerapplication.data.request.LoginRequest
 import com.example.engineerapplication.data.response.LoginResponse
@@ -97,7 +99,7 @@ object DataSource {
     }
 
 
-    fun tablejob(userid:Int):List<OrderdetailModel>{
+    fun tablejob(userid: Int): List<OrderdetailModel> {
         return transaction {
             addLogger(StdOutSqlLogger)
             (Orderl innerJoin Status)
@@ -136,6 +138,88 @@ object DataSource {
                 .select { Orderl.order_id eq idjob }
                 .map { ImageMap.toImage(it) }
                 .single()
+        }
+
+    }
+
+    fun ckek(req: CkkRequest): ChekMaterialModel {
+        val response = ChekMaterialModel()
+        val result = transaction {
+            addLogger(StdOutSqlLogger)
+            (Orderl_detail innerJoin Material)
+                .slice(
+                    Material.material_id,
+                    Material.material_name,
+                    Material.price_material,
+                    Orderl_detail.qty
+                )
+                .select { Material.material_id eq req.idmaterial!!.toInt() }
+                .count()
+                .toInt()
+        }
+        if (result == 0) {
+            response.success = false
+            response.id=0
+            response.name = "0"
+            response.qty = 0
+            response.price = 0
+        } else {
+            val result2 = transaction {
+                addLogger(StdOutSqlLogger)
+                (Orderl_detail innerJoin Material)
+                    .slice(
+                        Material.material_id,
+                        Material.material_name,
+                        Material.price_material,
+                        Orderl_detail.qty
+                    )
+                    .select { Material.material_id eq req.idmaterial!!.toInt() }
+                    .map { MaterialMap.toChekMaterial(it) }
+                    .single()
+
+            }
+            response.success = true
+            response.id=result2.id
+            response.name = result2.name
+            response.qty = result2.qty
+            response.price = result2.price
+
+        }
+        return response
+
+    }
+
+    fun setviewmaterial(idjob: Int): List<SetViewMatialModel> {
+        return transaction {
+            addLogger(StdOutSqlLogger)
+             Material
+                .slice(
+                    Material.material_name,
+                    Material.price_material,
+                    Material.material_id,
+                )
+                .selectAll()
+                .map { MaterialMap.toSetViewMatial(it) }
+        }
+    }
+
+    fun add(req:AddRequest){
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            Orderl_detail.update ({Orderl_detail.orderl_id eq req.orderid!!.toInt()}){
+                    it[Orderl_detail.qty]=req.qty.toString().toInt()
+            }
+        }
+
+    }
+    fun addnew(req:AddRequest){
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            Orderl_detail.insert {
+                it[Orderl_detail.qty]=req.qty.toString().toInt()
+                it[Orderl_detail.orderl_id]=req.orderid.toString().toInt()
+                it[Orderl_detail.material_id]=req.materialid.toString().toInt()
+            }
         }
 
     }

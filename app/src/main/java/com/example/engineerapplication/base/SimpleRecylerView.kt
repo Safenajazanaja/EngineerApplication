@@ -100,7 +100,7 @@ abstract class SingleRecyclerView<T : Any> :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): SingleRecyclerView<T>.ItemViewHolder {
+    ): ItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(getLayout(), parent, false)
         return ItemViewHolder(view)
     }

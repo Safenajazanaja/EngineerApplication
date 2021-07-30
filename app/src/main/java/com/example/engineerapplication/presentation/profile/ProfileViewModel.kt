@@ -1,4 +1,4 @@
-package com.example.engineerapplication.presentation.technician.profile
+package com.example.engineerapplication.presentation.profile
 
 import android.util.Log
 import androidx.lifecycle.LiveData

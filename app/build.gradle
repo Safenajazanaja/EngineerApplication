@@ -73,4 +73,16 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.0-rc01'
 
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+
+
+    //CircleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+
+//CounterFab
+    implementation 'com.github.andremion:counterfab:1.2.2'
+
+
+//viewpager2
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 }

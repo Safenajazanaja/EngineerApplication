@@ -1,4 +1,4 @@
-package com.example.engineerapplication.presentation.technician.history
+package com.example.engineerapplication.presentation.history
 
 
 import android.os.Bundle

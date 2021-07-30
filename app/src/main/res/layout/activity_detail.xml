@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/call"
     android:orientation="vertical"
-    tools:context=".presentation.history.detail.DetailActivity">
+    >
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,6 +47,14 @@
                     android:background="@color/white"
                     android:visibility="visible">
                 </androidx.recyclerview.widget.RecyclerView>
+
+                <Button
+                    android:id="@+id/btaddmat"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="เพิ่มวรายกาวัสดุ"
+                    android:textColorHint="#FBF9F9"
+                    app:backgroundTint="#0B2EEF" />
             </LinearLayout>
 
 

@@ -19,4 +19,15 @@
     <color name="color_dark_header">#9D77BA</color>
     <color name="color_text">#FFFFFF</color>
     <color name="colorNavigation">#E9EBEE</color>
+
+
+    <color name="colorTeal">#008081</color>
+    <color name="colorRed">#FF0000</color>
+    <color name="colorDivider">#EEEEEE</color>
+    <color name="colorGray12">#888888</color>
+    <color name="colorWhite2">#ccffffff</color>
+    <color name="colorGray1A">#1affffff</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorDarkGreen">#0E6251</color>
 </resources>

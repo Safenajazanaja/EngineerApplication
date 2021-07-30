@@ -13,4 +13,9 @@
 
     <string name="radioButton1">ดำเนินการเรียบร้อย</string>
     <string name="radioButton2">รอเปลี่ยนอะไหล่</string>
+
+    <!--food_drink Screen-->
+    <string name="added">เพิ่มแล้ว</string>
+    <!--food_drink Screen End-->
+
 </resources>
