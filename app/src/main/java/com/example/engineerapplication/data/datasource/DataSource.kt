@@ -5,10 +5,7 @@ import android.util.Log
 import com.example.engineerapplication.data.database.*
 import com.example.engineerapplication.data.map.*
 import com.example.engineerapplication.data.models.*
-import com.example.engineerapplication.data.request.AddRequest
-import com.example.engineerapplication.data.request.CkkRequest
-import com.example.engineerapplication.data.request.ImagsRequest
-import com.example.engineerapplication.data.request.LoginRequest
+import com.example.engineerapplication.data.request.*
 import com.example.engineerapplication.data.response.LoginResponse
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -221,6 +218,30 @@ object DataSource {
                 it[Orderl_detail.material_id]=req.materialid.toString().toInt()
             }
         }
+
+    }
+
+    fun history(req: HistoryRequest): List<HistoryModel> {
+
+
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            (Orderl innerJoin Status)
+                .slice(
+                    Orderl.abode,
+                    Orderl.order_id,
+                    Orderl.repair_list,
+                    Orderl.dateLong,
+                    Orderl.price, //add
+                    Status.status_name
+                )
+                .select { Orderl.id_technician eq req.id }
+                .andWhere { Orderl.dateLong.between(req.star, req.end) }
+                .map { HistoryMap.toHistory(it) }
+
+
+        }
+
 
     }
 

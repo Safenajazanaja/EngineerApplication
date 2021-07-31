@@ -20,15 +20,15 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv_repair_list_table"
-                android:layout_width="wrap_content"
                 android:textColor="@color/black"
+                android:id="@+id/tv_repair_list"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Repair List" />
 
             <TextView
                 android:textColor="@color/black"
-                android:id="@+id/tv_adode_date_table"
+                android:id="@+id/tv_adode_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="200dp"
@@ -38,22 +38,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
 
 
             <TextView
+                android:id="@+id/tv_price_his"
                 android:textColor="@color/black"
-                android:id="@+id/tv_price_table"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="50dp"
 
                 android:text="price" />
-
             <TextView
+                android:id="@+id/tv_ststa"
                 android:textColor="@color/black"
-                android:id="@+id/tv_ststa_table"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 

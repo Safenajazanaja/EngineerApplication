@@ -8,9 +8,9 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.example.engineerapplication.R
 import com.example.engineerapplication.base.BaseActivity
-import com.example.engineerapplication.presentation.admin.history.HistoryFragment
 import com.example.engineerapplication.presentation.admin.member.MemberFragment
 import com.example.engineerapplication.presentation.admin.workjob.WorkjobFragment
+import com.example.engineerapplication.presentation.history.HistoryFragment
 import com.example.engineerapplication.presentation.technician.table.TablejobFragment
 import com.example.engineerapplication.presentation.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -60,9 +60,10 @@ class MainActivity : BaseActivity() {
             BottomNavigationView.OnNavigationItemSelectedListener { item ->
                 val selectedFragment: Fragment = when (item.itemId) {
                     R.id.nav_work -> WorkjobFragment()
-                    R.id.nav_history -> HistoryFragment()
-//                    R.id.nav_member -> MemberFragment()
-                    else -> MemberFragment()
+                    R.id.nav_history_ad -> HistoryFragment()
+                    R.id.nav_member -> MemberFragment()
+                    R.id.nav_profile_ad -> ProfileFragment()
+                    else -> WorkjobFragment()
                 }
                 replaceFragment(selectedFragment)
                 true
@@ -73,6 +74,7 @@ class MainActivity : BaseActivity() {
             val selectedFragment: Fragment = when (item.itemId) {
                 R.id.nav_job_you -> TablejobFragment()
                 R.id.nav_history_mend -> HistoryFragment()
+                R.id.nav_profile_ad -> ProfileFragment()
                 else -> ProfileFragment()
             }
             replaceFragment(selectedFragment)
