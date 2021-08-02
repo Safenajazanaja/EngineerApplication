@@ -1,14 +1,17 @@
-package com.example.engineerapplication.presentation.history
+package com.example.engineerapplication.presentation.admin.member
+
+
 
 import android.view.View
 import com.example.engineerapplication.R
 import com.example.engineerapplication.base.ExpandableListAdapter
 import com.example.engineerapplication.data.models.HistoryModel2
 import com.example.engineerapplication.data.models.OrderModeldetail
+
 import kotlinx.android.synthetic.main.item_history_date.view.*
 import kotlinx.android.synthetic.main.item_single_item_main.view.*
 
-class HistoryAdepter : ExpandableListAdapter<HistoryModel2, OrderModeldetail>() {
+class TraceMemberAdepter : ExpandableListAdapter<HistoryModel2, OrderModeldetail>() {
     override fun getPropertyDetailList(item: HistoryModel2): List<OrderModeldetail> {
         return item.orders
     }
@@ -26,23 +29,22 @@ class HistoryAdepter : ExpandableListAdapter<HistoryModel2, OrderModeldetail>() 
         tv_repair_list.text = item.repair_List
         tv_adode_date.text = item.adode
         if (item.price == null) {
-            tv_price_his.text = "อยู่ระหว่างประเมินราคา"
+            tv_price_his.text = "อยู่ระหว่างการประเมิน"
         } else {
             tv_price_his.text = item.price.toString()
         }
-
         tv_ststa.text = item.status
-
-
         setOnClickListener {
             listener?.invoke(item)
         }
-    }
 
+    }
 
     private var listener: ((OrderModeldetail) -> Unit)? = null
 
     fun setOnClickListener(listener: (OrderModeldetail) -> Unit) {
         this.listener = listener
     }
+
+
 }

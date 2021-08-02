@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EngineerApplication">
-        <activity android:name=".presentation.material.MaterialActivity"></activity>
+        <activity android:name=".presentation.admin.workjob.manage.ManageActivity"></activity>
+        <activity android:name=".presentation.material.MaterialActivity" />
         <activity android:name=".presentation.technician.table.detail.DetailActivity" />
         <activity android:name=".presentation.login.LoginActivity">
             <intent-filter>
@@ -18,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.main.MainActivity"></activity>
+        <activity android:name=".presentation.main.MainActivity" />
     </application>
 
 </manifest>

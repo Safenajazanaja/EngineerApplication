@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.example.engineerapplication.R
 import com.example.engineerapplication.base.BaseActivity
-import com.example.engineerapplication.presentation.admin.member.MemberFragment
+import com.example.engineerapplication.presentation.admin.member.TraceMemberFragment
 import com.example.engineerapplication.presentation.admin.workjob.WorkjobFragment
 import com.example.engineerapplication.presentation.history.HistoryFragment
 import com.example.engineerapplication.presentation.technician.table.TablejobFragment
@@ -43,7 +43,14 @@ class MainActivity : BaseActivity() {
                 bottom_navigation_admin.visibility = View.GONE
             }
             if (savedInstanceState == null)
-                replaceFragment(TablejobFragment())
+                if (id==1){
+                    replaceFragment(WorkjobFragment())
+                }else if (id!=1){
+                    replaceFragment(TablejobFragment())
+                }
+
+
+
         })
 
 
@@ -60,8 +67,8 @@ class MainActivity : BaseActivity() {
             BottomNavigationView.OnNavigationItemSelectedListener { item ->
                 val selectedFragment: Fragment = when (item.itemId) {
                     R.id.nav_work -> WorkjobFragment()
-                    R.id.nav_history_ad -> HistoryFragment()
-                    R.id.nav_member -> MemberFragment()
+//                    R.id.nav_history_ad -> HistoryFragment()
+                    R.id.nav_member -> TraceMemberFragment()
                     R.id.nav_profile_ad -> ProfileFragment()
                     else -> WorkjobFragment()
                 }

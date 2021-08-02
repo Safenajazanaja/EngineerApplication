@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
 
-abstract class SimpleExpandableListAdapter<MAIN, DETAIL> : BaseExpandableListAdapter() {
+abstract class ExpandableListAdapter<MAIN, DETAIL> : BaseExpandableListAdapter() {
 
     private var list = mutableListOf<MAIN>()
 

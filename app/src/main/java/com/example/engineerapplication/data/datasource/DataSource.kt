@@ -241,6 +241,43 @@ object DataSource {
 
 
         }
+    }
+
+
+    fun tracememberjob(): List<HistoryModel> {
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            (Orderl innerJoin Status)
+                .slice(
+                    Orderl.abode,
+                    Orderl.order_id,
+                    Orderl.repair_list,
+                    Orderl.dateLong,
+                    Orderl.price, //add
+                    Status.status_name
+                )
+                .select { Orderl.status neq  4 }
+                .map { HistoryMap.toHistory(it) }
+        }
+
+
+    }
+
+    fun workjob(): List<HistoryModel> {
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            (Orderl innerJoin Status)
+                .slice(
+                    Orderl.abode,
+                    Orderl.order_id,
+                    Orderl.repair_list,
+                    Orderl.dateLong,
+                    Orderl.price, //add
+                    Status.status_name
+                )
+                .select { Orderl.status eq 1 }
+                .map { HistoryMap.toHistory(it) }
+        }
 
 
     }

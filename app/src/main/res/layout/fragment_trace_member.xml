@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center_horizontal">
+
     <androidx.cardview.widget.CardView
         android:id="@+id/Layout"
         android:layout_width="match_parent"
@@ -22,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:text="การจัดการงาน"
+            android:text="ติดตามงานช่าง"
             android:textSize="30dp"
             android:textColor="@color/black" />
     </androidx.cardview.widget.CardView>
@@ -30,37 +31,16 @@
 
 
 
-    <LinearLayout
+
+    <ExpandableListView
+        android:layout_margin="10dp"
+        android:id="@+id/expandableListViewmembertrace"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/Layout"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
-        <ExpandableListView
-            android:id="@+id/expandableaddtecView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/linearlayout">
+        android:layout_marginTop="26dp"
 
-
-        </ExpandableListView>
-
-
-
-
-
-    </LinearLayout>
-
-    <!--    <androidx.recyclerview.widget.RecyclerView-->
-    <!--        android:id="@+id/recyclerViewDetail"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:layout_below="@+id/linearlayout"-->
-    <!--        android:layout_marginTop="-1dp"-->
-    <!--        android:clipToPadding="false"-->
-    <!--        tools:listitem="@layout/item_history" />-->
-
-
+        />
 
 
 </RelativeLayout>
