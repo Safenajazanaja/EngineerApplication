@@ -282,6 +282,25 @@ object DataSource {
 
     }
 
+    fun workaddtecjob(): List<WorkaddTecModel> {
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            (Orderl innerJoin Status)
+                .slice(
+                    Orderl.order_id,
+                    Orderl.abode,
+                    Orderl.repair_list,
+                    Orderl.dateLong,
+                    Orderl.price, //add
+                    Status.status_name
+                )
+                .select { Orderl.status eq 1 }
+                .map { WorkAddTecjob.toWorkaddTec(it) }
+        }
+
+
+    }
+
 
 }
 

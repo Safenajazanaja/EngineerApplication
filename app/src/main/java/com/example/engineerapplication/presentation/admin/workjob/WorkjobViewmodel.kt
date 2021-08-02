@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.easyfix.data.datasource.DataSource
-import com.example.engineerapplication.data.models.HistoryModel2
-import com.example.engineerapplication.data.models.OrderModeldetail
+import com.example.engineerapplication.data.models.OrderaddModel
+import com.example.engineerapplication.data.models.WorkaddTec2Model
 import java.text.SimpleDateFormat
 
 class WorkjobViewmodel : ViewModel() {
@@ -14,8 +14,8 @@ class WorkjobViewmodel : ViewModel() {
     val toast: LiveData<String>
         get() = _toast
 
-    private var _work = MutableLiveData<List<HistoryModel2>>()
-    val work: LiveData<List<HistoryModel2>>
+    private var _work = MutableLiveData<List<WorkaddTec2Model>>()
+    val work: LiveData<List<WorkaddTec2Model>>
         get() = _work
 
     fun workjob() {
@@ -23,14 +23,14 @@ class WorkjobViewmodel : ViewModel() {
         val sdf = SimpleDateFormat("dd/MM/yyyy")
         val date = result
             .map { db ->
-                HistoryModel2(
+                WorkaddTec2Model(
                     date = sdf.format(db.date),
                     datelong = db.date,
                     sumOrderByDate = result.filter { sdf.format(it.date) == sdf.format(db.date) }
                         .count(),
                     orders = result.filter { sdf.format(it.date) == sdf.format(db.date) }
                         .map {
-                            OrderModeldetail(
+                            OrderaddModel(
                                 orderid = it.order,
                                 adode = it.adode,
                                 repair_List = it.repair_List,

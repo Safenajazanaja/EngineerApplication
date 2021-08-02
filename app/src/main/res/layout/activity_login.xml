@@ -12,7 +12,7 @@
     <ImageView
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:src="@drawable/main" />
+        android:src="@drawable/main2" />
 
 
     <com.google.android.material.textfield.TextInputLayout
