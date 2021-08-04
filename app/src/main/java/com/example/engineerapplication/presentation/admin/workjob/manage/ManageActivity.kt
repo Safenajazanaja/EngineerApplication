@@ -2,23 +2,30 @@ package com.example.engineerapplication.presentation.admin.workjob.manage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import com.example.engineerapplication.R
 import com.example.engineerapplication.base.BaseActivity
+import com.example.engineerapplication.data.models.ManageModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.activity_manage.*
+import java.text.SimpleDateFormat
 
 class ManageActivity : BaseActivity(), OnMapReadyCallback {
     private var jobid: Int? = null
     private var mGoogleMap: GoogleMap? = null
     private var latitudeMap: Double = 0.0
     private var longitudeMap: Double = 0.0
+    private lateinit var viewModel: ManageViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manage)
+
+        viewModel = ViewModelProvider(this).get(ManageViewModel::class.java)
 
 
         val userId = baseContext?.getSharedPreferences(
@@ -26,26 +33,35 @@ class ManageActivity : BaseActivity(), OnMapReadyCallback {
             AppCompatActivity.MODE_PRIVATE
         )?.getInt("id", 0)
 
-
-        val userId2 = intent.getIntExtra("user_id", 0)
-        val abode = intent.getStringExtra("abode")
-        val repair_list = intent.getStringExtra("repair_list")
-        val date = intent.getLongExtra("date", 0)
-        val latitude = intent.getDoubleExtra("latitude", 0.0)
-        val longitude = intent.getDoubleExtra("longitude", 0.0)
-        val idtypejob = intent.getIntExtra("type_job", 0)
-        val idtime=intent.getIntExtra("timejob",0)
-        val timezone=intent.getStringExtra("timezone")
         val idjob = intent.getIntExtra("orderid", 0)
-        jobid = idjob
 
-        latitudeMap = latitude.toDouble()
-        longitudeMap = longitude.toDouble()
+
+
+        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
+
+        viewModel.mana(idjob)
+
+
+
+
+
+        viewModel.workjob.observe(this, {db->
+            val dateString = simpleDateFormat.format(db.date)
+            tv_namejob_manage.text=db.typejob
+            tv_date_manage.text=dateString
+            tv_abode_manage.text=db.abode
+            tv_time_manage.text=db.timezone
+            tv_repairlist_manage.text=db.repair_list
+            longitudeMap= db.longitude!!
+            latitudeMap= db.latitudeval!!
+        })
 
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.maps) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {

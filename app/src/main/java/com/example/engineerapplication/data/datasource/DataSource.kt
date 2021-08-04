@@ -156,7 +156,7 @@ object DataSource {
         }
         if (result == 0) {
             response.success = false
-            response.id=0
+            response.id = 0
             response.name = "0"
             response.qty = 0
             response.price = 0
@@ -176,7 +176,7 @@ object DataSource {
 
             }
             response.success = true
-            response.id=result2.id
+            response.id = result2.id
             response.name = result2.name
             response.qty = result2.qty
             response.price = result2.price
@@ -189,7 +189,7 @@ object DataSource {
     fun setviewmaterial(idjob: Int): List<SetViewMatialModel> {
         return transaction {
             addLogger(StdOutSqlLogger)
-             Material
+            Material
                 .slice(
                     Material.material_name,
                     Material.price_material,
@@ -200,22 +200,23 @@ object DataSource {
         }
     }
 
-    fun add(req:AddRequest){
+    fun add(req: AddRequest) {
         return transaction {
             addLogger(StdOutSqlLogger)
-            Orderl_detail.update ({Orderl_detail.orderl_id eq req.orderid!!.toInt()}){
-                    it[Orderl_detail.qty]=req.qty.toString().toInt()
+            Orderl_detail.update({ Orderl_detail.orderl_id eq req.orderid!!.toInt() }) {
+                it[Orderl_detail.qty] = req.qty.toString().toInt()
             }
         }
 
     }
-    fun addnew(req:AddRequest){
+
+    fun addnew(req: AddRequest) {
         return transaction {
             addLogger(StdOutSqlLogger)
             Orderl_detail.insert {
-                it[Orderl_detail.qty]=req.qty.toString().toInt()
-                it[Orderl_detail.orderl_id]=req.orderid.toString().toInt()
-                it[Orderl_detail.material_id]=req.materialid.toString().toInt()
+                it[Orderl_detail.qty] = req.qty.toString().toInt()
+                it[Orderl_detail.orderl_id] = req.orderid.toString().toInt()
+                it[Orderl_detail.material_id] = req.materialid.toString().toInt()
             }
         }
 
@@ -256,7 +257,7 @@ object DataSource {
                     Orderl.price, //add
                     Status.status_name
                 )
-                .select { Orderl.status neq  4 }
+                .select { Orderl.status neq 4 }
                 .map { HistoryMap.toHistory(it) }
         }
 
@@ -299,6 +300,27 @@ object DataSource {
         }
 
 
+    }
+
+    fun manage(idjob: Int): ManageModel {
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            (Orderl innerJoin Time innerJoin Type_job)
+                .slice(
+                    Orderl.order_id,
+                    Orderl.abode,
+                    Orderl.repair_list,
+                    Orderl.dateLong,
+                    Orderl.latitude,
+                    Orderl.longitude,
+                    Type_job.namejob,
+                    Time.time
+                    )
+                .select { Orderl.order_id eq idjob }
+                .map { ManageMap.toManageMap(it) }
+                .single()
+
+        }
     }
 
 

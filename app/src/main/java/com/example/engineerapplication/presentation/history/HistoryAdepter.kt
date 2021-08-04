@@ -25,11 +25,11 @@ class HistoryAdepter : ExpandableListAdapter<HistoryModel2, OrderModeldetail>() 
     override fun View.onBindViewHolderDetail(item: OrderModeldetail) {
         tv_repair_list.text = item.repair_List
         tv_adode_date.text = item.adode
-        if (item.price == null) {
-            tv_price_his.text = "อยู่ระหว่างประเมินราคา"
-        } else {
-            tv_price_his.text = item.price.toString()
-        }
+//        if (item.price == null) {
+//            tv_price_his.text = "อยู่ระหว่างประเมินราคา"
+//        } else {
+//            tv_price_his.text = item.price.toString()
+//        }
 
         tv_ststa.text = item.status
 

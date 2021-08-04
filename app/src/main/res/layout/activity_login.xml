@@ -47,15 +47,12 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-
     <Button
         android:id="@+id/btlogin"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:hint="Login"
-        android:textColorHint="#000000"
-        app:backgroundTint="#8BC34A" />
-
+        android:textColorHint="#FFFFFF" />
 
 
 </LinearLayout>
