@@ -8,5 +8,6 @@ data class ManageModel (
     val latitudeval :Double?=null,
     val longitude:Double?=null,
     val typejob:String?=null,
-    val timezone:String?=null
+    val timezone:String?=null,
+    val idtime:Int?=null
 )

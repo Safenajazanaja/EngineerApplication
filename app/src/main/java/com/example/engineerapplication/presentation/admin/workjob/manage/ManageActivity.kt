@@ -2,10 +2,13 @@ package com.example.engineerapplication.presentation.admin.workjob.manage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
+import com.example.easyfix.data.datasource.DataSource
 import com.example.engineerapplication.R
 import com.example.engineerapplication.base.BaseActivity
 import com.example.engineerapplication.data.models.ManageModel
+import com.example.engineerapplication.data.request.ChekTec2
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -39,6 +42,7 @@ class ManageActivity : BaseActivity(), OnMapReadyCallback {
 
         val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
 
+
         viewModel.mana(idjob)
 
 
@@ -54,8 +58,14 @@ class ManageActivity : BaseActivity(), OnMapReadyCallback {
             tv_repairlist_manage.text=db.repair_list
             longitudeMap= db.longitude!!
             latitudeMap= db.latitudeval!!
+            val req=ChekTec2(date = db.date!!,id_time = db.idtime!!)
+            viewModel.chek(req)
+
         })
 
+        viewModel.chektec.observe(this,{
+            Log.d(TAG, "add: $it")
+        })
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.maps) as SupportMapFragment
@@ -70,5 +80,9 @@ class ManageActivity : BaseActivity(), OnMapReadyCallback {
         mGoogleMap?.addMarker(MarkerOptions().position(latLng).title("บ้าน"))
         mGoogleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
 
+    }
+
+    companion object{
+        private const val TAG ="ManageActivity"
     }
 }

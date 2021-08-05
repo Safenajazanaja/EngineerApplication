@@ -314,14 +314,72 @@ object DataSource {
                     Orderl.latitude,
                     Orderl.longitude,
                     Type_job.namejob,
-                    Time.time
-                    )
+                    Time.time,
+                    Orderl.idtime
+                )
                 .select { Orderl.order_id eq idjob }
                 .map { ManageMap.toManageMap(it) }
                 .single()
 
         }
     }
+
+//    fun chektec2(req: ChekTec2): List<Technician1Model> {
+//        return transaction {
+//            addLogger(StdOutSqlLogger)
+//            (Orderl innerJoin Technician)
+//                .slice(
+//                    Technician.technician_id,
+//                    Technician.fullname
+//                )
+//                .select { Orderl.dateLong eq req.date }
+//                .andWhere { Orderl.idtime neq req.time }
+//                .map { TechnicianMap.toTechnician1(it) }
+//        }
+//    }
+
+    fun chektec1(): List<Technician1Model> {
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            Technician
+                .slice(
+                    Technician.technician_id,
+                    Technician.fullname
+                )
+                .selectAll()
+                .map { TechnicianMap.toTechnician1(it) }
+        }
+    }
+
+    fun chektec2(req: ChekTecaddRequest): Technician2Model {
+        val response =Technician2Model()
+        val result= transaction {
+            addLogger(StdOutSqlLogger)
+            Orderl
+                .slice(
+                    Orderl.id_technician
+                )
+                .select { Orderl.id_technician eq req.id_tec }
+                .andWhere { Orderl.dateLong eq req.date }
+                .andWhere { Orderl.idtime eq req.id_time }
+                .count()
+                .toInt()
+        }
+
+        if (result==1){
+            response.id=req.id_tec
+            response.success=true
+
+        }else{
+            response.success=false
+
+        }
+        return response
+
+
+    }
+
+
 
 
 }

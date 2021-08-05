@@ -17,5 +17,6 @@ object ManageMap {
         longitude = row[Orderl.longitude],
         typejob = row[Type_job.namejob],
         timezone = row[Time.time],
+        idtime = row[Orderl.idtime]
         )
 }
