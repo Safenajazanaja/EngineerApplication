@@ -69,8 +69,7 @@ class HistoryViewModel : ViewModel() {
                                     )
                                 }
                         )
-                    }.sortedBy { it.date }
-                    .distinctBy { it.date }
+                    }.sortedBy { it.date }.distinctBy { it.date }
                 Log.d(TAG, "repair: ${Gson().toJson(result)}")
                 _history2.value = result2
 

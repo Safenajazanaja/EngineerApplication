@@ -366,12 +366,13 @@ object DataSource {
                 .toInt()
         }
 
-        if (result==1){
-            response.id=req.id_tec
-            response.success=true
+        if (result>=1){
+
+            response.success=false
 
         }else{
-            response.success=false
+            response.id=req.id_tec
+            response.success=true
 
         }
         return response

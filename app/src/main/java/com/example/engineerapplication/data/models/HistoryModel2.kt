@@ -7,3 +7,5 @@ data class HistoryModel2(
     val sumOrderByDate: Int,
     val orders: List<OrderModeldetail>
 )
+
+

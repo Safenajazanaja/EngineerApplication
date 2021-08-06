@@ -64,7 +64,7 @@ class ManageActivity : BaseActivity(), OnMapReadyCallback {
         })
 
         viewModel.chektec.observe(this,{
-            Log.d(TAG, "add: $it")
+            Log.d(TAG, "add22: $it")
         })
 
         val mapFragment = supportFragmentManager
