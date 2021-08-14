@@ -32,7 +32,10 @@ class LoginViewModel:ViewModel() {
 
                 val result = DataSource.login(request)
                 _login.value = result.success
-                _id.value=result.userId
+                if (result.userId!=null){
+                    _id.value=result.userId
+                }
+
 
 
             }

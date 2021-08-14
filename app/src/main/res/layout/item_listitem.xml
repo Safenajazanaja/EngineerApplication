@@ -36,10 +36,9 @@
     <TextView
         android:id="@+id/tv_price"
         style="@style/TextColum"
-        android:layout_width="50dp"
+        android:layout_width="94dp"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:text="ราคารวม"
-        />
+        android:text="ราคารวม" />
 
 </GridLayout>

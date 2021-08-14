@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="25dp"
+    android:padding="20dp"
     android:layout_gravity="center">
 
     <androidx.cardview.widget.CardView
@@ -29,29 +29,30 @@
                 style="@style/ImageViewPhoto"
                 android:background="#935050" />
             <LinearLayout
+                android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/TextViewLargeApplicationSub"
                     android:drawableStart="@drawable/ic_baseline_email_24"
-                    android:text="รหัสสมาชิก" />
+                    android:text="รหัสสมาชิก     :  " />
 
                 <TextView
                     android:id="@+id/tv_username_tec"
                     style="@style/TextViewLargeApplicationSub"
-                    android:layout_marginTop="@dimen/base_zero"
                     />
 
             </LinearLayout>
             <LinearLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/TextViewLargeApplicationSub"
                     android:drawableStart="@drawable/ic_baseline_person_24"
-                    android:text="ชื่อ-นาสกุล" />
+                    android:text="ชื่อ-นาสกุล      :  "/>
 
                 <TextView
                     android:id="@+id/tv_full_name_tec"
@@ -59,13 +60,14 @@
 
             </LinearLayout>
             <LinearLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/TextViewLargeApplicationSub"
                     android:drawableStart="@drawable/ic_baseline_phone_iphone_24"
-                    android:text="เบอร์" />
+                    android:text="เบอร์โทรศัพท์ :  " />
 
                 <TextView
                     android:id="@+id/tv_phone_tec"

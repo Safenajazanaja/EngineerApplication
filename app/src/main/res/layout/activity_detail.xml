@@ -63,11 +63,17 @@
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ราคาบริการ   :   "
+                            android:textColor="@color/black" />
+
                         <TextView
                             android:id="@+id/tv_tec"
-                            android:layout_width="200dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="ราคาช่าง"
                             android:textColor="@color/black" />
                     </LinearLayout>
 
@@ -76,26 +82,40 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right">
+
                         <Button
-                            android:layout_gravity="top"
                             android:id="@+id/btpricetec"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="top"
                             android:hint="เพิ่มค่าบริการ"
                             android:textColorHint="#FBF9F9"
                             app:backgroundTint="#0B2EEF" />
                     </LinearLayout>
                 </LinearLayout>
 
-
-                <TextView
-                    android:gravity="center"
-                    android:id="@+id/tv_sum"
+                <LinearLayout
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="ราคารวม"
-                    android:textColor="@color/black" />
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="ราคารวม  : "
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_sum"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

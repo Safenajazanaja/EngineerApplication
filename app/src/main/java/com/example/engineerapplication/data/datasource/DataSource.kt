@@ -6,6 +6,7 @@ import com.example.engineerapplication.data.database.*
 import com.example.engineerapplication.data.map.*
 import com.example.engineerapplication.data.models.*
 import com.example.engineerapplication.data.request.*
+import com.example.engineerapplication.data.response.ChekpricetecResponse
 import com.example.engineerapplication.data.response.LoginResponse
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -151,6 +152,7 @@ object DataSource {
                     Orderl_detail.qty
                 )
                 .select { Material.material_id eq req.idmaterial!!.toInt() }
+                .andWhere { Orderl_detail.orderl_id eq req.idjob!!.toInt() }
                 .count()
                 .toInt()
         }
@@ -171,6 +173,7 @@ object DataSource {
                         Orderl_detail.qty
                     )
                     .select { Material.material_id eq req.idmaterial!!.toInt() }
+                    .andWhere { Orderl_detail.orderl_id eq req.idjob!!.toInt() }
                     .map { MaterialMap.toChekMaterial(it) }
                     .single()
 
@@ -320,7 +323,6 @@ object DataSource {
                 .select { Orderl.order_id eq idjob }
                 .map { ManageMap.toManageMap(it) }
                 .single()
-
         }
     }
 
@@ -378,6 +380,34 @@ object DataSource {
         return response
 
 
+    }
+
+    fun addpricetec(req:PriceTecRequest){
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            Orderl.update ( {Orderl.order_id eq req.orderid!!.toInt()} ){
+                it[Orderl.price]= req.price!!.toInt()
+            }
+        }
+
+    }
+
+    fun chekpricetec(idjob: Int): ChekpricetecResponse {
+        val response = ChekpricetecResponse()
+        val result = transaction {
+
+            Orderl.slice(Orderl.price)
+                .select { Orderl.order_id eq idjob }
+                .map { it[Orderl.price] }
+                .single()
+        }
+
+        if (result==null){
+            response.price = 0
+        }else{
+            response.price = result
+        }
+        return response
     }
 
 
