@@ -110,6 +110,8 @@ object DataSource {
                     Status.status_name
                 )
                 .select { Orderl.id_technician eq userid }
+                .andWhere { Orderl.status neq 4  }
+                .andWhere { Orderl.status neq 5  }
                 .map { TableJobMap.toTableJob(it) }
         }
     }
@@ -206,7 +208,7 @@ object DataSource {
     fun add(req: AddRequest) {
         return transaction {
             addLogger(StdOutSqlLogger)
-            Orderl_detail.update({ Orderl_detail.orderl_id eq req.orderid!!.toInt() }) {
+            Orderl_detail.update({ (Orderl_detail.orderl_id eq req.orderid!!.toInt())and (Orderl_detail.material_id eq req.materialid!!.toInt())}) {
                 it[Orderl_detail.qty] = req.qty.toString().toInt()
             }
         }
@@ -408,6 +410,27 @@ object DataSource {
             response.price = result
         }
         return response
+    }
+
+
+    fun canceljob(idjob: Int){
+        return  transaction {
+            Orderl.update({Orderl.order_id eq idjob}){
+               it[Orderl.status]=  5
+            }
+        }
+
+
+    }
+
+    fun confimjob(idjob: Int){
+        return  transaction {
+            Orderl.update({Orderl.order_id eq idjob}){
+                it[Orderl.status]=  3
+            }
+        }
+
+
     }
 
 

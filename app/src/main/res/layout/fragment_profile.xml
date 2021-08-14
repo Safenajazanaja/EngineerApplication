@@ -36,11 +36,13 @@
                 <TextView
                     style="@style/TextViewLargeApplicationSub"
                     android:drawableStart="@drawable/ic_baseline_email_24"
-                    android:text="รหัสสมาชิก     :  " />
+                    android:text="รหัสสมาชิก     :  "
+                    android:textSize="20dp"/>
 
                 <TextView
                     android:id="@+id/tv_username_tec"
                     style="@style/TextViewLargeApplicationSub"
+                    android:textSize="20dp"
                     />
 
             </LinearLayout>
@@ -52,11 +54,13 @@
                 <TextView
                     style="@style/TextViewLargeApplicationSub"
                     android:drawableStart="@drawable/ic_baseline_person_24"
-                    android:text="ชื่อ-นาสกุล      :  "/>
+                    android:text="ชื่อ-นาสกุล      :  "
+                    android:textSize="20dp"/>
 
                 <TextView
                     android:id="@+id/tv_full_name_tec"
-                    style="@style/TextViewLargeApplicationSub" />
+                    style="@style/TextViewLargeApplicationSub"
+                    android:textSize="20dp"/>
 
             </LinearLayout>
             <LinearLayout
@@ -67,11 +71,13 @@
                 <TextView
                     style="@style/TextViewLargeApplicationSub"
                     android:drawableStart="@drawable/ic_baseline_phone_iphone_24"
-                    android:text="เบอร์โทรศัพท์ :  " />
+                    android:text="เบอร์โทรศัพท์ :  "
+                    android:textSize="20dp"/>
 
                 <TextView
                     android:id="@+id/tv_phone_tec"
-                    style="@style/TextViewLargeApplicationSub" />
+                    style="@style/TextViewLargeApplicationSub"
+                    android:textSize="20dp"/>
 
             </LinearLayout>
         </LinearLayout>

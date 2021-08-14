@@ -39,6 +39,8 @@ class DetailActivity : BaseActivity() {
     private val mColumAdapter = ColumAdapter()
     private val mList = ListAdapter()
     private var jobid: Int? = null
+    private var listjob: Int? = null
+    private var pricetec:Int?=null
 
     private lateinit var viewModel: DetailViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,21 +68,25 @@ class DetailActivity : BaseActivity() {
             }
             mColumAdapter.submitData(Unit)
             mList.submitList(list)
+            if (list!=null) run {
+                listjob = 1
+
+            }
             Log.d(TAG, "repair2: ${Gson().toJson(list)}")
             Log.d(TAG, "repair3: ${Gson().toJson(mList.submitList(list))}")
         })
 
 
-        viewModel.chekpricetec(idjob)
-        viewModel.listdetail(idjob)
+
         viewModel.pricetec.observe(this, {
             if (it != null) {
-                all=it
-                if (it!=0){
+                all = it
+                if (it != 0) {
                     tv_tec.text = df.format(it).toString() + " บาท"
+                    pricetec=1
                 }
 
-            }else if (it==null){
+            } else if (it == null) {
                 tv_tec.text = " "
             }
 
@@ -90,8 +96,8 @@ class DetailActivity : BaseActivity() {
 
                 val sum: Int = list.sumOf { it.sum!! }
                 val sum2: Int = sum.toInt() + all
-                if (sum2!=0){
-                    tv_sum.text =df.format(sum2)+ " บาท"
+                if (sum2 != 0) {
+                    tv_sum.text = df.format(sum2) + " บาท"
                 }
 
             }
@@ -130,7 +136,7 @@ class DetailActivity : BaseActivity() {
                     val req = PriceTecRequest(orderid = idjob, price = texttec.toString().toInt())
                     viewModel.pricetec(req)
                     mAlertDialog.dismiss()
-                    tv_tec.text = df.format(texttec).toString()+ " บาท"
+                    tv_tec.text = df.format(texttec.toString().toInt()).toString() + " บาท"
                 }
             }
             mDialogView.dialogCancel.setOnClickListener {
@@ -142,6 +148,8 @@ class DetailActivity : BaseActivity() {
 
         viewModel.chekImg(idjob)
 
+
+
         btaddmat.setOnClickListener {
             val intent = Intent(baseContext, MaterialActivity::class.java).apply {
                 putExtra("orderid", idjob)
@@ -151,6 +159,28 @@ class DetailActivity : BaseActivity() {
             startActivity(intent)
         }
 
+
+
+        btoktec.setOnClickListener {
+            viewModel.confim(idjob)
+
+        }
+
+        btcanceltec.setOnClickListener{
+            viewModel.cancel(idjob)
+        }
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        jobid?.let { viewModel.chekpricetec(it) }
+        jobid?.let { viewModel.listdetail(it) }
+        if (listjob == 1 && pricetec ==1) {
+            btoktec.visibility=View.VISIBLE
+            btcanceltec.visibility=View.VISIBLE
+        }
     }
 
     companion object {

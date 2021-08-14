@@ -68,6 +68,15 @@ class DetailViewModel : ViewModel() {
 
     }
 
+    fun cancel(jobid: Int) {
+        DataSource.canceljob(jobid)
+
+    }
+    fun confim(jobid: Int) {
+        DataSource.confimjob(jobid)
+
+    }
+
 
     companion object {
         private const val TAG = "www"

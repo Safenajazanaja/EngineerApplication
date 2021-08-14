@@ -41,7 +41,10 @@ class MaterialActivity : BaseActivity() {
         Log.d(TAG, "repair95: ${idjob}")
         viewModel.material(idjob)
     }
+
     companion object {
         private const val TAG = " Material"
     }
+
+
 }
