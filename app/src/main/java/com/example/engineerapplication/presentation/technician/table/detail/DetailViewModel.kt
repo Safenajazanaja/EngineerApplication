@@ -26,13 +26,18 @@ class DetailViewModel : ViewModel() {
     val imgpayModel: LiveData<ImagModel>
         get() = _imgpayModel
 
-    private var _pricetec = MutableLiveData<Int>()
-    val pricetec: LiveData<Int>
-        get() = _pricetec
+    private var _statusjob = MutableLiveData<Int>()
+    val statusjob: LiveData<Int>
+        get() = _statusjob
 
     private val _sumprice = MutableLiveData<List<SumpriceModel>>()
     val sumprice: LiveData<List<SumpriceModel>>
         get() = _sumprice
+
+
+    private var _pricetec = MutableLiveData<Int>()
+    val pricetec: LiveData<Int>
+        get() = _pricetec
 
     fun pricetec(req: PriceTecRequest) {
         DataSource.addpricetec(req)
@@ -72,11 +77,20 @@ class DetailViewModel : ViewModel() {
         DataSource.canceljob(jobid)
 
     }
+
     fun confim(jobid: Int) {
         DataSource.confimjob(jobid)
 
     }
+    fun finishjob(jobid: Int) {
+        DataSource.finishjob(jobid)
 
+    }
+    fun chekstatusjob(idjob: Int) {
+        val request = DataSource.chekstatusjob(idjob)
+        _statusjob.value = request.status
+
+    }
 
     companion object {
         private const val TAG = "www"

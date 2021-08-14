@@ -21,6 +21,7 @@ import com.example.engineerapplication.base.Dru
 import com.example.engineerapplication.base.Dru.loadImageCircle
 import com.example.engineerapplication.data.request.ImagsRequest
 import com.example.engineerapplication.data.request.PriceTecRequest
+import com.example.engineerapplication.presentation.main.MainActivity
 import com.example.engineerapplication.presentation.material.MaterialActivity
 import com.example.loginmvvm.presentation.history.detail.ColumAdapter
 
@@ -40,7 +41,7 @@ class DetailActivity : BaseActivity() {
     private val mList = ListAdapter()
     private var jobid: Int? = null
     private var listjob: Int? = null
-    private var pricetec:Int?=null
+    private var pricetec: Int? = null
 
     private lateinit var viewModel: DetailViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,7 +69,7 @@ class DetailActivity : BaseActivity() {
             }
             mColumAdapter.submitData(Unit)
             mList.submitList(list)
-            if (list!=null) run {
+            if (list != null) run {
                 listjob = 1
 
             }
@@ -83,9 +84,8 @@ class DetailActivity : BaseActivity() {
                 all = it
                 if (it != 0) {
                     tv_tec.text = df.format(it).toString() + " บาท"
-                    pricetec=1
+                    pricetec = 1
                 }
-
             } else if (it == null) {
                 tv_tec.text = " "
             }
@@ -145,10 +145,7 @@ class DetailActivity : BaseActivity() {
 
         }
 
-
         viewModel.chekImg(idjob)
-
-
 
         btaddmat.setOnClickListener {
             val intent = Intent(baseContext, MaterialActivity::class.java).apply {
@@ -163,10 +160,20 @@ class DetailActivity : BaseActivity() {
 
         btoktec.setOnClickListener {
             viewModel.confim(idjob)
+            val intent = Intent(baseContext, MainActivity::class.java)
+            startActivity(intent)
+            Toasty.Config.getInstance().setTextSize(30)
+            Toasty.success(baseContext, "บันทึกงานสำเร็จ")
 
         }
 
-        btcanceltec.setOnClickListener{
+        btfinishtec.setOnClickListener {
+            viewModel.finishjob(idjob)
+
+
+        }
+
+        btcanceltec.setOnClickListener {
             viewModel.cancel(idjob)
         }
 
@@ -174,12 +181,23 @@ class DetailActivity : BaseActivity() {
     }
 
     override fun onResume() {
+
         super.onResume()
+        jobid?.let { viewModel.chekstatusjob(it) }
         jobid?.let { viewModel.chekpricetec(it) }
         jobid?.let { viewModel.listdetail(it) }
-        if (listjob == 1 && pricetec ==1) {
-            btoktec.visibility=View.VISIBLE
-            btcanceltec.visibility=View.VISIBLE
+        if (listjob == 1 && pricetec == 1) {
+            btoktec.visibility = View.VISIBLE
+            btcanceltec.visibility = View.VISIBLE
+            if (viewModel.statusjob.value == 3) {
+                btoktec.visibility = View.GONE
+                btcanceltec.visibility = View.GONE
+                btfinishtec.visibility = View.VISIBLE
+            } else if (viewModel.statusjob.value == 4) {
+                btoktec.visibility = View.GONE
+                btcanceltec.visibility = View.GONE
+                btfinishtec.visibility = View.GONE
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.engineerapplication.presentation.material
 
+import android.content.Context
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.easyfix.data.datasource.DataSource
@@ -8,6 +9,7 @@ import com.example.engineerapplication.base.BaseRecyclerView
 import com.example.engineerapplication.data.models.SetViewMatialModel
 import com.example.engineerapplication.data.request.AddRequest
 import com.example.engineerapplication.data.request.CkkRequest
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.item_material.view.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -51,10 +53,14 @@ class MaterialAdapter : BaseRecyclerView<SetViewMatialModel>() {
             if (ckk.success == true) {
                 val add = AddRequest(orderid = idjob, materialid = ckk.id, qty = sumall)
                 DataSource.add(add)
+                Toasty.Config.getInstance().setTextSize(30)
+                Toasty.success(context,"บันทึกสำเร็จ")
             } else {
                 if (sumall != 0) {
                     val add = AddRequest(orderid = idjob, materialid = data.id, qty = sumall)
                     DataSource.addnew(add)
+                    Toasty.Config.getInstance().setTextSize(30)
+                    Toasty.success(context,"บันทึกสำเร็จ")
                 }
 
             }

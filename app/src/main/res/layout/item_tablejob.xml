@@ -41,14 +41,14 @@
             android:orientation="horizontal">
 
 
-            <TextView
-                android:textColor="@color/black"
-                android:id="@+id/tv_price_table"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="50dp"
+<!--            <TextView-->
+<!--                android:textColor="@color/black"-->
+<!--                android:id="@+id/tv_price_table"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginRight="50dp"-->
 
-                android:text="price" />
+<!--                android:text="price" />-->
 
             <TextView
                 android:textColor="@color/black"

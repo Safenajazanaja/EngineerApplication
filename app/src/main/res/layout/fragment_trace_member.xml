@@ -33,6 +33,8 @@
 
 
     <ExpandableListView
+        android:divider="#989090"
+        android:dividerHeight="5dp"
         android:layout_margin="10dp"
         android:id="@+id/expandableListViewmembertrace"
         android:layout_width="match_parent"

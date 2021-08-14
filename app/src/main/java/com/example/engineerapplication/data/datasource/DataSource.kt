@@ -6,6 +6,7 @@ import com.example.engineerapplication.data.database.*
 import com.example.engineerapplication.data.map.*
 import com.example.engineerapplication.data.models.*
 import com.example.engineerapplication.data.request.*
+import com.example.engineerapplication.data.response.ChekStatusResponse
 import com.example.engineerapplication.data.response.ChekpricetecResponse
 import com.example.engineerapplication.data.response.LoginResponse
 import org.jetbrains.exposed.sql.*
@@ -110,8 +111,8 @@ object DataSource {
                     Status.status_name
                 )
                 .select { Orderl.id_technician eq userid }
-                .andWhere { Orderl.status neq 4  }
-                .andWhere { Orderl.status neq 5  }
+                .andWhere { Orderl.status neq 4 }
+                .andWhere { Orderl.status neq 5 }
                 .map { TableJobMap.toTableJob(it) }
         }
     }
@@ -208,7 +209,7 @@ object DataSource {
     fun add(req: AddRequest) {
         return transaction {
             addLogger(StdOutSqlLogger)
-            Orderl_detail.update({ (Orderl_detail.orderl_id eq req.orderid!!.toInt())and (Orderl_detail.material_id eq req.materialid!!.toInt())}) {
+            Orderl_detail.update({ (Orderl_detail.orderl_id eq req.orderid!!.toInt()) and (Orderl_detail.material_id eq req.materialid!!.toInt()) }) {
                 it[Orderl_detail.qty] = req.qty.toString().toInt()
             }
         }
@@ -356,8 +357,8 @@ object DataSource {
     }
 
     fun chektec2(req: ChekTecaddRequest): Technician2Model {
-        val response =Technician2Model()
-        val result= transaction {
+        val response = Technician2Model()
+        val result = transaction {
             addLogger(StdOutSqlLogger)
             Orderl
                 .slice(
@@ -370,13 +371,13 @@ object DataSource {
                 .toInt()
         }
 
-        if (result>=1){
+        if (result >= 1) {
 
-            response.success=false
+            response.success = false
 
-        }else{
-            response.id=req.id_tec
-            response.success=true
+        } else {
+            response.id = req.id_tec
+            response.success = true
 
         }
         return response
@@ -384,11 +385,11 @@ object DataSource {
 
     }
 
-    fun addpricetec(req:PriceTecRequest){
+    fun addpricetec(req: PriceTecRequest) {
         return transaction {
             addLogger(StdOutSqlLogger)
-            Orderl.update ( {Orderl.order_id eq req.orderid!!.toInt()} ){
-                it[Orderl.price]= req.price!!.toInt()
+            Orderl.update({ Orderl.order_id eq req.orderid!!.toInt() }) {
+                it[Orderl.price] = req.price!!.toInt()
             }
         }
 
@@ -404,36 +405,60 @@ object DataSource {
                 .single()
         }
 
-        if (result==null){
+        if (result == null) {
             response.price = 0
-        }else{
+        } else {
             response.price = result
         }
         return response
     }
 
 
-    fun canceljob(idjob: Int){
-        return  transaction {
-            Orderl.update({Orderl.order_id eq idjob}){
-               it[Orderl.status]=  5
+    fun canceljob(idjob: Int) {
+        return transaction {
+            Orderl.update({ Orderl.order_id eq idjob }) {
+                it[Orderl.status] = 5
             }
         }
 
 
     }
 
-    fun confimjob(idjob: Int){
-        return  transaction {
-            Orderl.update({Orderl.order_id eq idjob}){
-                it[Orderl.status]=  3
+    fun confimjob(idjob: Int) {
+        return transaction {
+            Orderl.update({ Orderl.order_id eq idjob }) {
+                it[Orderl.status] = 3
+            }
+        }
+
+
+    }
+    fun finishjob(idjob: Int) {
+        return transaction {
+            Orderl.update({ Orderl.order_id eq idjob }) {
+                it[Orderl.status] = 4
             }
         }
 
 
     }
 
+    fun chekstatusjob(idjob: Int): ChekStatusResponse {
+        var req = ChekStatusResponse()
+        val result = transaction {
+            addLogger(StdOutSqlLogger)
+            Orderl
+                .slice(
+                    Orderl.status
+                )
+                .select { Orderl.order_id eq idjob }
+                .map { it[Orderl.status] }
+                .single()
+        }
+        req.status=result
+        return req
 
+    }
 
 
 }

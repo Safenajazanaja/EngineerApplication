@@ -37,6 +37,8 @@
         android:orientation="horizontal"
         android:gravity="center_horizontal">
         <ExpandableListView
+            android:divider="#989090"
+            android:dividerHeight="5dp"
             android:id="@+id/expandableaddtecView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
