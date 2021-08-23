@@ -460,6 +460,15 @@ object DataSource {
 
     }
 
+    fun confimtec(req:ConfimtecRequest){
+        return transaction {
+            Orderl.update({ Orderl.order_id eq req.id_job }) {
+                it[Orderl.id_technician] = req.id_tec
+                it[Orderl.status]=2
+            }
+        }
+    }
+
 
 }
 

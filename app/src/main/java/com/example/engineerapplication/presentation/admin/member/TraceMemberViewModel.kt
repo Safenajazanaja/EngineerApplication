@@ -40,7 +40,7 @@ class TraceMemberViewModel: ViewModel() {
                             )
                         }
                 )
-            }.sortedBy { it.date }
+            }.sortedBy { it.datelong }
             .distinctBy { it.date }
         Log.d(TAG,"trace: ${Gson().toJson(date)}")
 

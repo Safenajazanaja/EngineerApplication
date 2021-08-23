@@ -15,223 +15,231 @@
         android:textColor="@color/black"
         android:textSize="30dp" />
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:orientation="vertical">
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/detaillayout"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            app:cardCornerRadius="10dp"
-            app:contentPadding="10dp">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/detaillayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recylerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:visibility="visible"></androidx.recyclerview.widget.RecyclerView>
-
-                <Button
-                    android:id="@+id/btaddmat"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:hint="เพิ่มรายกาวัสดุ"
-                    android:textColorHint="#FBF9F9"
-                    app:backgroundTint="#0B2EEF" />
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                app:cardCornerRadius="10dp"
+                app:contentPadding="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="200dp"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recylerView"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center">
+                        android:background="@color/white"
+                        android:visibility="visible"></androidx.recyclerview.widget.RecyclerView>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="ราคาบริการ   :   "
-                            android:textColor="@color/black" />
-
-                        <TextView
-                            android:id="@+id/tv_tec"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/black" />
-                    </LinearLayout>
-
+                    <Button
+                        android:id="@+id/btaddmat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:hint="เพิ่มรายกาวัสดุ"
+                        android:textColorHint="#FBF9F9"
+                        app:backgroundTint="#0B2EEF" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="right">
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ราคาบริการ   :   "
+                                android:textColor="@color/black" />
+
+                            <TextView
+                                android:id="@+id/tv_tec"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <Button
+                                android:id="@+id/btpricetec"
+                                android:layout_width="131dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:hint="เพิ่มค่าบริการ"
+                                android:textColorHint="#FBF9F9"
+                                app:backgroundTint="#0B2EEF" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="ราคารวม  : "
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/tv_sum"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <Button
+                            android:visibility="gone"
+                            android:id="@+id/btoktec"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:hint="เริ่มดำเดินงานซ่อม"
+                            android:textColorHint="#FBF9F9"
+                            app:backgroundTint="#0B2EEF"
+                            android:layout_marginEnd="20dp"/>
 
                         <Button
-                            android:id="@+id/btpricetec"
+                            android:id="@+id/btcanceltec"
+                            android:visibility="gone"
+                            android:gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="top"
-                            android:hint="เพิ่มค่าบริการ"
+                            android:layout_gravity="center"
+                            android:hint="ยกเลิกงานซ่อม"
                             android:textColorHint="#FBF9F9"
                             app:backgroundTint="#0B2EEF" />
+
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <Button
+                            android:visibility="gone"
+                            android:id="@+id/btfinishtec"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:hint="งานเสร็จสิน"
+                            android:textColorHint="#FBF9F9"
+                            app:backgroundTint="#0B2EEF"
+                            android:layout_marginEnd="20dp"/>
+
+
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="ราคารวม  : "
-                        android:textColor="@color/black" />
+            </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/tv_sum"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black" />
-                </LinearLayout>
 
-            <LinearLayout
-                android:layout_marginTop="10dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layoutpay"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-                <Button
-                    android:visibility="gone"
-                    android:id="@+id/btoktec"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:hint="เริ่มดำเดินงานซ่อม"
-                    android:textColorHint="#FBF9F9"
-                    app:backgroundTint="#0B2EEF"
-                    android:layout_marginEnd="20dp"/>
-
-                <Button
-                    android:id="@+id/btcanceltec"
-                    android:visibility="gone"
-                    android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:hint="ยกเลิกงานซ่อม"
-                    android:textColorHint="#FBF9F9"
-                    app:backgroundTint="#0B2EEF" />
-
-            </LinearLayout>
-
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center">
-                    <Button
-                        android:visibility="gone"
-                        android:id="@+id/btfinishtec"
-                        android:gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:hint="งานเสร็จสิน"
-                        android:textColorHint="#FBF9F9"
-                        app:backgroundTint="#0B2EEF"
-                        android:layout_marginEnd="20dp"/>
-
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/layoutpay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="15dp"
-            android:visibility="visible"
-            app:cardCornerRadius="10dp"
-            app:contentPadding="16dp">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:visibility="visible"
+                app:cardCornerRadius="10dp"
+                app:contentPadding="16dp">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/bank" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:text="ธนาคารกสิกร : 054-8-39317-5"
-                        android:textColor="@color/black" />
-
-                </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:orientation="vertical">
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
 
                         <ImageView
-                            android:id="@+id/iv_photo_money"
-                            android:layout_width="250dp"
-                            android:layout_height="250dp"
-                            android:layout_margin="15dp"
-                            android:src="@drawable/save_money" />
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/bank" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:text="ธนาคารกสิกร : 054-8-39317-5"
+                            android:textColor="@color/black" />
+
                     </LinearLayout>
-                </RelativeLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/iv_photo_money"
+                                android:layout_width="250dp"
+                                android:layout_height="250dp"
+                                android:layout_margin="15dp"
+                                android:src="@drawable/save_money" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
 </LinearLayout>

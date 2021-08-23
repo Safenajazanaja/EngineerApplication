@@ -40,7 +40,7 @@ class WorkjobViewmodel : ViewModel() {
                             )
                         }
                 )
-            }.sortedBy { it.date }
+            }.sortedBy { it.datelong }
             .distinctBy { it.date }
 
         _work.value=date

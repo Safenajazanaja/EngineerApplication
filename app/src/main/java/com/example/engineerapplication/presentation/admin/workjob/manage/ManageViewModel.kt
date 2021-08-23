@@ -11,6 +11,7 @@ import com.example.engineerapplication.data.models.Technician1Model
 import com.example.engineerapplication.data.models.Technician3Model
 import com.example.engineerapplication.data.request.ChekTec2
 import com.example.engineerapplication.data.request.ChekTecaddRequest
+import com.example.engineerapplication.data.request.ConfimtecRequest
 import com.example.engineerapplication.data.request.LoginRequest
 import com.example.engineerapplication.data.response.LoginResponse
 import com.example.engineerapplication.presentation.history.HistoryViewModel
@@ -35,6 +36,11 @@ class ManageViewModel : ViewModel() {
 
     fun mana(idjob: Int) {
         _workjob.value = DataSource.manage(idjob)
+    }
+
+    fun confim(req: ConfimtecRequest){
+        DataSource.confimtec(req)
+
     }
 
 

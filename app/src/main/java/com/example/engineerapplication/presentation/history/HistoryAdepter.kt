@@ -16,22 +16,22 @@ class HistoryAdepter : ExpandableListAdapter<HistoryModel2, OrderModeldetail>() 
     override fun onCreateViewHolderMain(): Int = R.layout.item_single_item_main
 
     override fun View.onBindViewHolderMain(item: HistoryModel2) {
-        tv_date.text = "วันที่ " + item.date
-        tv_datesum.text = "รวม " + item.sumOrderByDate.toString() + " รายการ"
+        tv_date.text = "  วันที่ " + item.date
+        tv_datesum.text = " รวม " + item.sumOrderByDate.toString() + " รายการ"
     }
 
     override fun onCreateViewHolderDetail(): Int = R.layout.item_history_date
 
     override fun View.onBindViewHolderDetail(item: OrderModeldetail) {
-        tv_repair_list.text = item.repair_List
-        tv_adode_date.text = item.adode
+        tv_repair_list.text ="ลักษณะงาน : "+ item.repair_List
+        tv_adode_date.text = "ที่อยู่ : "+item.adode
 //        if (item.price == null) {
 //            tv_price_his.text = "อยู่ระหว่างประเมินราคา"
 //        } else {
 //            tv_price_his.text = item.price.toString()
 //        }
 
-        tv_ststa.text = item.status
+        tv_ststa.text ="สถานะ : "+ item.status
 
 
         setOnClickListener {

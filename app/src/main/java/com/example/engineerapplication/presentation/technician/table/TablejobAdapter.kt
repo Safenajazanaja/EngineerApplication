@@ -10,7 +10,7 @@ class TablejobAdapter : BaseRecyclerView<OrderdetailModel>() {
     override fun getLayout(): Int = R.layout.item_tablejob
     override fun View.onBindViewHolder(data: OrderdetailModel) {
         tv_repair_list_table.text = "รายการซ่อม "+data.repair_List
-        tv_adode_date_table.text ="ที่อยู่ " +data.adode
+        tv_adode_date_table.text ="ที่อยู่ :" +data.adode
 //        if (data.price == null) {
 //            tv_price_table.text = "ราคา อยู่ระหว่างการประเมิน"
 //        } else {

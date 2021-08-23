@@ -9,7 +9,12 @@ object Users : Table("user") {
     val fullname = varchar("fullname", 30)
     val phone = varchar("phone", 10)
     val image =varchar("image",1000)
+    val abode=varchar("abode",50)
 
+    //    val geo_id=integer("geo_id").references(Geography.geo_id)
+    val province_id=integer("province_id").references(Province.province_id)
+    val amphur_id= integer("amphur_id").references(Amphur.amphur_id)
+    val district_id= integer("district_id").references(District.district_id)
 
     override val primaryKey: PrimaryKey?
         get() = PrimaryKey(user_id, name = "user_id_PK")

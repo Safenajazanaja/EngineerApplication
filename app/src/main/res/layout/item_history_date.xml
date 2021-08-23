@@ -9,17 +9,20 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp">
         <LinearLayout
-            android:background="#84898A"
+            android:background="#E8F3F6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
+                android:layout_marginStart="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -27,7 +30,7 @@
                     <TextView
                         android:textColor="@color/black"
                         android:id="@+id/tv_repair_list"
-                        android:layout_width="wrap_content"
+                        android:layout_width="167dp"
                         android:layout_height="wrap_content"
                         android:text="Repair List" />
 
@@ -36,7 +39,6 @@
                         android:id="@+id/tv_adode_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="200dp"
                         android:text="adode" />
                 </LinearLayout>
 

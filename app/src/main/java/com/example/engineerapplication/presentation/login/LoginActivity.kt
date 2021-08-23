@@ -9,6 +9,7 @@ import com.example.engineerapplication.R
 import com.example.engineerapplication.base.BaseActivity
 import com.example.engineerapplication.data.request.LoginRequest
 import com.example.engineerapplication.presentation.main.MainActivity
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseActivity() {
@@ -29,15 +30,17 @@ class LoginActivity : BaseActivity() {
 
                     val preferences = getSharedPreferences("file", Context.MODE_PRIVATE)
                     viewModel.id.let { preferences.edit().putInt("id",a).apply() }
-                    Toast.makeText(baseContext, "ผ่าน", Toast.LENGTH_SHORT).show()
+                    Toasty.Config.getInstance().setTextSize(30)
+                    Toasty.success(baseContext,"เข้าสู่ระบบสำเร็จ", Toast.LENGTH_SHORT).show()
+
                     val intent= Intent(baseContext, MainActivity::class.java).putExtra("id",a)
                     startActivity(intent)
 
                 })
 
             } else {
-                Toast.makeText(baseContext, "ตรวจสอบอีกครั้ง", Toast.LENGTH_SHORT)
-                    .show()
+                Toasty.Config.getInstance().setTextSize(30)
+                Toasty.error(baseContext,"ตรวจสอบอีกครั้ง", Toast.LENGTH_SHORT).show()
             }
         })
 

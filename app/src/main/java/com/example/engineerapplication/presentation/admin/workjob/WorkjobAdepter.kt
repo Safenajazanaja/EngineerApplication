@@ -26,14 +26,14 @@ class WorkjobAdepter : ExpandableListAdapter<WorkaddTec2Model, OrderaddModel>() 
     override fun onCreateViewHolderDetail(): Int = R.layout.item_history_date
 
     override fun View.onBindViewHolderDetail(item: OrderaddModel) {
-        tv_repair_list.text = item.repair_List
-        tv_adode_date.text = item.adode
+        tv_repair_list.text = "งานที่ซ่อม : "+item.repair_List
+        tv_adode_date.text = "ที่อยู่ : "+ item.adode
 //        if (item.price == null) {
 //            tv_price_his.text = "อยู่ระหว่างการประเมิน"
 //        } else {
 //            tv_price_his.text = item.price.toString()
 //        }
-        tv_ststa.text = item.status
+        tv_ststa.text = "สถานะงาน : "+item.status
         setOnClickListener {
             listener?.invoke(item)
         }
