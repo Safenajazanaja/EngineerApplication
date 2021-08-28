@@ -233,14 +233,15 @@ object DataSource {
 
         return transaction {
             addLogger(StdOutSqlLogger)
-            (Orderl innerJoin Status)
+            (Orderl innerJoin Status innerJoin Type_job)
                 .slice(
                     Orderl.abode,
                     Orderl.order_id,
                     Orderl.repair_list,
                     Orderl.dateLong,
                     Orderl.price, //add
-                    Status.status_name
+                    Status.status_name,
+                    Type_job.namejob
                 )
                 .select { Orderl.id_technician eq req.id }
                 .andWhere { Orderl.dateLong.between(req.star, req.end) }
@@ -254,14 +255,15 @@ object DataSource {
     fun tracememberjob(): List<HistoryModel> {
         return transaction {
             addLogger(StdOutSqlLogger)
-            (Orderl innerJoin Status)
+            (Orderl innerJoin Status innerJoin Type_job)
                 .slice(
                     Orderl.abode,
                     Orderl.order_id,
                     Orderl.repair_list,
                     Orderl.dateLong,
                     Orderl.price, //add
-                    Status.status_name
+                    Status.status_name,
+                    Type_job.namejob
                 )
                 .select { Orderl.status neq 4 }
                 .map { HistoryMap.toHistory(it) }
@@ -273,14 +275,15 @@ object DataSource {
     fun workjob(): List<HistoryModel> {
         return transaction {
             addLogger(StdOutSqlLogger)
-            (Orderl innerJoin Status)
+            (Orderl innerJoin Status innerJoin Type_job)
                 .slice(
                     Orderl.abode,
                     Orderl.order_id,
                     Orderl.repair_list,
                     Orderl.dateLong,
                     Orderl.price, //add
-                    Status.status_name
+                    Status.status_name,
+                    Type_job.namejob
                 )
                 .select { Orderl.status eq 1 }
                 .map { HistoryMap.toHistory(it) }
@@ -433,6 +436,7 @@ object DataSource {
 
 
     }
+
     fun finishjob(idjob: Int) {
         return transaction {
             Orderl.update({ Orderl.order_id eq idjob }) {
@@ -455,16 +459,16 @@ object DataSource {
                 .map { it[Orderl.status] }
                 .single()
         }
-        req.status=result
+        req.status = result
         return req
 
     }
 
-    fun confimtec(req:ConfimtecRequest){
+    fun confimtec(req: ConfimtecRequest) {
         return transaction {
             Orderl.update({ Orderl.order_id eq req.id_job }) {
                 it[Orderl.id_technician] = req.id_tec
-                it[Orderl.status]=2
+                it[Orderl.status] = 2
             }
         }
     }

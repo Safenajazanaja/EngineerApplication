@@ -1,4 +1,4 @@
-package com.example.engineerapplication.presentation.technician.table
+package com.example.engineerapplication.presentation.technician
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -36,7 +36,8 @@ class WorkjobViewmodel : ViewModel() {
                                 repair_List = it.repair_List,
                                 date = sdf.format(it.date),
                                 price = it.price,
-                                status = it.status
+                                status = it.status,
+                                type = it.type
                             )
                         }
                 )

@@ -1,4 +1,4 @@
-package com.example.engineerapplication.presentation.technician.table
+package com.example.engineerapplication.presentation.technician
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,12 +7,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.engineerapplication.R
 import com.example.engineerapplication.base.BaseFragment
-import com.example.engineerapplication.data.models.OrderdetailModel
-import com.example.engineerapplication.presentation.technician.table.detail.DetailActivity
+import com.example.engineerapplication.presentation.technician.detail.DetailActivity
 import kotlinx.android.synthetic.main.fragment_tec_tablejob.*
 
 class TablejobFragment:BaseFragment(R.layout.fragment_tec_tablejob) {
-    private  lateinit var viewModel:TableViewModel
+    private  lateinit var viewModel: TableViewModel
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -34,7 +33,7 @@ class TablejobFragment:BaseFragment(R.layout.fragment_tec_tablejob) {
             adt.setList(tablejob)
 
             adt.onClick={
-                val intent=Intent(context,DetailActivity::class.java).apply {
+                val intent=Intent(context, DetailActivity::class.java).apply {
                     putExtra("orderid", it.orderid)
                 }
                 startActivity(intent)

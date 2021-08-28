@@ -6,5 +6,6 @@ data class HistoryModel(
     val repair_List:String?=null,
     val date:Long?=null,
     val price:Int?=null,
-    val status: String? =null
+    val status: String? =null,
+    val type:String?=null
 )

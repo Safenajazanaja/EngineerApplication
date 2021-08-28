@@ -3,7 +3,7 @@
     <item
         android:id="@+id/nav_work"
         android:icon="@drawable/ic_baseline_call_24"
-        android:title="จัดการงานแจ้งซ่อมเข้าใหม่" />
+        android:title="จัดการงานเข้าใหม่" />
     <item
         android:id="@+id/nav_member"
         android:icon="@drawable/ic_baseline_build_circle_24"
@@ -13,7 +13,7 @@
 <!--        android:icon="@drawable/ic_baseline_history_toggle_off_24"-->
 <!--        android:title="ประวัติการทำงาน" />-->
     <item
-        android:id="@+id/nav_profile_ad"
-        android:icon="@drawable/ic_baseline_person_24"
-        android:title="ข้อมูลส่วนตัว" />
+        android:id="@+id/nav_deal_ad"
+        android:icon="@drawable/ic_baseline_drag_handle_24"
+        android:title="การจัดการ" />
 </menu>

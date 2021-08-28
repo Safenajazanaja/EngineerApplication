@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.engineerapplication.R
 import com.example.engineerapplication.base.BaseFragment
-import com.example.engineerapplication.presentation.technician.table.detail.DetailActivity
+import com.example.engineerapplication.presentation.technician.detail.DetailActivity
 import kotlinx.android.synthetic.main.fragment_trace_member.*
 
 class TraceMemberFragment:BaseFragment(R.layout.fragment_trace_member) {
@@ -30,7 +30,7 @@ class TraceMemberFragment:BaseFragment(R.layout.fragment_trace_member) {
 
             mTraceMemberAdepter.setList(mem)
             mTraceMemberAdepter.setOnClickListener {
-                val intent=Intent(context,DetailActivity::class.java).apply {
+                val intent=Intent(context, DetailActivity::class.java).apply {
                     putExtra("orderid",it.orderid)
                 }
                 startActivity(intent)

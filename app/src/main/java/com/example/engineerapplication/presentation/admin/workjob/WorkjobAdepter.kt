@@ -27,7 +27,7 @@ class WorkjobAdepter : ExpandableListAdapter<WorkaddTec2Model, OrderaddModel>() 
 
     override fun View.onBindViewHolderDetail(item: OrderaddModel) {
         tv_repair_list.text = "งานที่ซ่อม : "+item.repair_List
-        tv_adode_date.text = "ที่อยู่ : "+ item.adode
+        tv_adode_date.text = "ประเภทงาน : "+ item.type
 //        if (item.price == null) {
 //            tv_price_his.text = "อยู่ระหว่างการประเมิน"
 //        } else {

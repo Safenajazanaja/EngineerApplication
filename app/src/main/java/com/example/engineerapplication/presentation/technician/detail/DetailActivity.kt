@@ -1,9 +1,7 @@
-package com.example.engineerapplication.presentation.technician.table.detail
+package com.example.engineerapplication.presentation.technician.detail
 
 
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,15 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.engineerapplication.R
 import com.example.engineerapplication.base.BaseActivity
-import com.example.engineerapplication.base.Dru
 import com.example.engineerapplication.base.Dru.loadImageCircle
-import com.example.engineerapplication.data.request.ImagsRequest
 import com.example.engineerapplication.data.request.PriceTecRequest
 import com.example.engineerapplication.presentation.main.MainActivity
 import com.example.engineerapplication.presentation.material.MaterialActivity
@@ -31,9 +26,6 @@ import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.home_dialog.view.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
-
-
-import java.util.*
 
 class DetailActivity : BaseActivity() {
 
@@ -132,11 +124,14 @@ class DetailActivity : BaseActivity() {
 
             mDialogView.dialogOK.setOnClickListener {
                 val texttec = mDialogView.dialog_text.text
-                if (texttec != null) {
+                if (texttec.toString() != "") {
                     val req = PriceTecRequest(orderid = idjob, price = texttec.toString().toInt())
                     viewModel.pricetec(req)
                     mAlertDialog.dismiss()
                     tv_tec.text = df.format(texttec.toString().toInt()).toString() + " บาท"
+                }else if (texttec.toString() ==""){
+                    Toasty.Config.getInstance().setTextSize(30)
+                    Toasty.warning(baseContext,"กรุณาใส่จำนวนเงิน", Toast.LENGTH_SHORT).show()
                 }
             }
             mDialogView.dialogCancel.setOnClickListener {

@@ -26,14 +26,14 @@ class TraceMemberAdepter : ExpandableListAdapter<HistoryModel2, OrderModeldetail
     override fun onCreateViewHolderDetail(): Int = R.layout.item_history_date
 
     override fun View.onBindViewHolderDetail(item: OrderModeldetail) {
-        tv_repair_list.text ="รายการซ่อม "+ item.repair_List
-        tv_adode_date.text ="ที่อยู่ " + item.adode
+        tv_repair_list.text ="รายการซ่อม : "+ item.repair_List
+        tv_adode_date.text ="ประเภทงาน : " + item.type
 //        if (item.price == null) {
 //            tv_price_his.text = "อยู่ระหว่างการประเมิน"
 //        } else {
 //            tv_price_his.text = item.price.toString()
 //        }
-        tv_ststa.text ="สถานะงาน "+  item.status
+        tv_ststa.text ="สถานะงาน : "+  item.status
         setOnClickListener {
             listener?.invoke(item)
         }

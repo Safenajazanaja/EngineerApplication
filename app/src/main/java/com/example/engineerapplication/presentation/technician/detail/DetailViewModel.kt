@@ -1,4 +1,4 @@
-package com.example.engineerapplication.presentation.technician.table.detail
+package com.example.engineerapplication.presentation.technician.detail
 
 
 import android.util.Log

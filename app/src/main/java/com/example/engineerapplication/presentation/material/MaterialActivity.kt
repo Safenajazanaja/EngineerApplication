@@ -1,15 +1,12 @@
 package com.example.engineerapplication.presentation.material
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.engineerapplication.R
 import com.example.engineerapplication.base.BaseActivity
-import com.example.engineerapplication.presentation.technician.table.detail.DetailActivity
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_material.*
 
 class MaterialActivity : BaseActivity() {

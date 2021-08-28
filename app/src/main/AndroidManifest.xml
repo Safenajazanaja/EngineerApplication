@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,9 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EngineerApplication">
-        <activity android:name=".presentation.admin.workjob.manage.ManageActivity"></activity>
+        <activity android:name=".presentation.deal.chekpay.ChekpayActivity"></activity>
+        <activity android:name=".presentation.deal.addmaterial.AddActivity" />
+        <activity android:name=".presentation.deal.DealFragment" />
+        <activity android:name=".presentation.admin.workjob.manage.ManageActivity" />
         <activity android:name=".presentation.material.MaterialActivity" />
-        <activity android:name=".presentation.technician.table.detail.DetailActivity" />
+        <activity android:name=".presentation.technician.detail.DetailActivity" />
         <activity android:name=".presentation.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,6 +32,5 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDvq-pKjRjELbmEQDE2pKGYPy8p1fr6TxQ" />
     </application>
-
 
 </manifest>

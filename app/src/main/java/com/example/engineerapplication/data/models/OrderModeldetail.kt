@@ -6,5 +6,6 @@ data class OrderModeldetail(
     val repair_List: String? = null,
     val date: String? = null,
     val price:Int?=null,
-    val status:String?=null
+    val status:String?=null,
+    val type:String?=null
 )

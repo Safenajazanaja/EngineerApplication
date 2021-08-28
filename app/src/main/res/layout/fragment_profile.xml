@@ -8,6 +8,7 @@
     android:layout_gravity="center">
 
     <androidx.cardview.widget.CardView
+        android:layout_marginTop="20dp"
         android:id="@+id/CardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,12 +38,14 @@
                     style="@style/TextViewLargeApplicationSub"
                     android:drawableStart="@drawable/ic_baseline_email_24"
                     android:text="รหัสสมาชิก     :  "
-                    android:textSize="15dp"/>
+                    />
 
                 <TextView
                     android:id="@+id/tv_username_tec"
                     style="@style/TextViewLargeApplicationSub"
-                    android:textSize="15dp"
+                    android:textSize="18sp"
+                    android:textStyle="normal"
+                    android:textColor="@color/colorPrimaryDark"
                     />
 
             </LinearLayout>
@@ -55,12 +58,14 @@
                     style="@style/TextViewLargeApplicationSub"
                     android:drawableStart="@drawable/ic_baseline_person_24"
                     android:text="ชื่อ-นาสกุล      :  "
-                    android:textSize="15dp"/>
+                    />
 
                 <TextView
                     android:id="@+id/tv_full_name_tec"
                     style="@style/TextViewLargeApplicationSub"
-                    android:textSize="15dp"/>
+                    android:textSize="18sp"
+                    android:textStyle="normal"
+                    android:textColor="@color/colorPrimaryDark"/>
 
             </LinearLayout>
             <LinearLayout
@@ -72,12 +77,14 @@
                     style="@style/TextViewLargeApplicationSub"
                     android:drawableStart="@drawable/ic_baseline_phone_iphone_24"
                     android:text="เบอร์โทรศัพท์ :  "
-                    android:textSize="15dp"/>
+                    />
 
                 <TextView
                     android:id="@+id/tv_phone_tec"
                     style="@style/TextViewLargeApplicationSub"
-                    android:textSize="15dp"/>
+                    android:textSize="18sp"
+                    android:textStyle="normal"
+                    android:textColor="@color/colorPrimaryDark"/>
 
             </LinearLayout>
         </LinearLayout>

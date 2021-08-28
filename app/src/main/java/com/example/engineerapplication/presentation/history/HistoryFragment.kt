@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.engineerapplication.R
 import com.example.engineerapplication.base.BaseFragment
 import com.example.engineerapplication.data.request.HistoryRequest
-import com.example.engineerapplication.presentation.technician.table.detail.DetailActivity
+import com.example.engineerapplication.presentation.technician.detail.DetailActivity
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_history.*
 import org.joda.time.DateTime
