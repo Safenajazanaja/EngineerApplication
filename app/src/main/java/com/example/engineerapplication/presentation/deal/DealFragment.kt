@@ -7,7 +7,6 @@ import com.example.engineerapplication.R
 import com.example.engineerapplication.base.BaseFragment
 import com.example.engineerapplication.presentation.deal.addmaterial.AddActivity
 import com.example.engineerapplication.presentation.deal.chekpay.ChekpayActivity
-import com.example.engineerapplication.presentation.main.MainActivity
 import kotlinx.android.synthetic.main.fragment_deal.*
 
 class DealFragment : BaseFragment(R.layout.fragment_deal) {

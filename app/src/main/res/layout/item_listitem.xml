@@ -11,34 +11,30 @@
         style="@style/TextColum"
         android:layout_width="79dp"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
         android:text="ชื่อวัสดุ" />
 
     <TextView
         android:id="@+id/tv_qty"
         style="@style/TextColum"
-        android:layout_width="76dp"
+        android:layout_width="63dp"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
         android:gravity="center"
         android:text="จำนวน" />
 
     <TextView
         android:id="@+id/tv_Unitprice"
         style="@style/TextColum"
-        android:layout_width="90dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:gravity="center"
+        android:gravity="right"
         android:text="ราคาต่อหน่วย"
          />
     <TextView
         android:id="@+id/tv_price"
         style="@style/TextColum"
-        android:layout_width="69dp"
+        android:layout_width="88dp"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:gravity="center"
+        android:gravity="right"
         android:text="ราคารวม" />
 
 </GridLayout>

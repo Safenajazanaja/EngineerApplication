@@ -13,36 +13,17 @@
         android:background="@color/black" />
 
     <TextView
-
         style="@style/Text.Title"
-        android:layout_width="79dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-
+        android:layout_margin="4dp"
         android:text="ชื่อวัสดุ" />
 
     <TextView
-
         style="@style/Text.Title"
-        android:layout_width="63dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:gravity="center"
-        android:text="จำนวน" />
-
-    <TextView
-
-        style="@style/Text.Title"
-        android:layout_width="139dp"
-        android:layout_height="wrap_content"
-
-        android:gravity="center"
-        android:text="ราคาต่อหน่วย(บาท)" />
-
-    <TextView
-
-        style="@style/Text.Title"
-        android:layout_width="69dp"
-        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
         android:text="ราคา(บาท)"
         android:gravity="center"/>
 

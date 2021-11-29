@@ -12,14 +12,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+
         android:theme="@style/Theme.EngineerApplication">
-        <activity android:name=".presentation.deal.chekpay.ChekpayActivity"></activity>
+
+        <activity android:name=".presentation.deal.chekpay.detail.DetailPayActivity"></activity>
+        <activity android:name=".presentation.deal.chekpay.ChekpayActivity" />
         <activity android:name=".presentation.deal.addmaterial.AddActivity" />
-        <activity android:name=".presentation.deal.DealFragment" />
+        <activity android:name=".presentation.deal.DealFragment"  />
         <activity android:name=".presentation.admin.workjob.manage.ManageActivity" />
         <activity android:name=".presentation.material.MaterialActivity" />
         <activity android:name=".presentation.technician.detail.DetailActivity" />
-        <activity android:name=".presentation.login.LoginActivity">
+        <activity android:name=".presentation.login.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+
 import com.example.engineerapplication.R
 import com.example.engineerapplication.base.BaseActivity
 import com.example.engineerapplication.presentation.admin.member.TraceMemberFragment
@@ -16,7 +17,7 @@ import com.example.engineerapplication.presentation.technician.TablejobFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class DealActivity : BaseActivity() {
+class DealMainActivity : BaseActivity() {
     private lateinit var viewModel: MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +27,7 @@ class DealActivity : BaseActivity() {
             AppCompatActivity.MODE_PRIVATE
         )?.getInt("id", 0)
 
-        viewModel= ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel=ViewModelProvider(this).get(MainViewModel::class.java)
         if (userId != null) {
             viewModel.chekrole(userId)
         }
@@ -44,7 +45,7 @@ class DealActivity : BaseActivity() {
             }
             if (savedInstanceState == null)
                 if (id==1){
-                    replaceFragment(WorkjobFragment())
+                    replaceFragment(DealFragment())
                 }else if (id!=1){
                     replaceFragment(TablejobFragment())
                 }
@@ -70,7 +71,7 @@ class DealActivity : BaseActivity() {
 //                    R.id.nav_history_ad -> HistoryFragment()
                 R.id.nav_member -> TraceMemberFragment()
                 R.id.nav_deal_ad -> DealFragment()
-                else -> WorkjobFragment()
+                else -> DealFragment()
             }
             replaceFragment(selectedFragment)
             true

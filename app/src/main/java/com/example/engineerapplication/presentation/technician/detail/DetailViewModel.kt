@@ -6,9 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.easyfix.data.datasource.DataSource
-import com.example.engineerapplication.data.models.ImagModel
-import com.example.engineerapplication.data.models.ListModel
-import com.example.engineerapplication.data.models.SumpriceModel
+import com.example.engineerapplication.data.models.*
+import com.example.engineerapplication.data.request.DateSumRequest
 import com.example.engineerapplication.data.request.PriceTecRequest
 import com.google.gson.Gson
 
@@ -27,7 +26,7 @@ class DetailViewModel : ViewModel() {
         get() = _imgpayModel
 
     private var _statusjob = MutableLiveData<Int>()
-    val statusjob: LiveData<Int>
+    val statuspayjob: LiveData<Int>
         get() = _statusjob
 
     private val _sumprice = MutableLiveData<List<SumpriceModel>>()
@@ -39,8 +38,33 @@ class DetailViewModel : ViewModel() {
     val pricetec: LiveData<Int>
         get() = _pricetec
 
+
+    private var _workjob = MutableLiveData<DetailModel>()
+    val workjob: LiveData<DetailModel>
+        get() = _workjob
+
+    private var _finishjob = MutableLiveData<ChekfinishModel>()
+    val finishjob: LiveData<ChekfinishModel>
+        get() = _finishjob
+    private var _datetec = MutableLiveData<Long>()
+    val datetec: LiveData<Long>
+        get() = _datetec
+
+    fun datetec(idjob: Int) {
+        val result = DataSource.chekperiod(idjob)
+        if (result.period == 0L) {
+            _datetec.value = 0L
+        } else {
+            _datetec.value = result.period
+        }
+    }
+
     fun pricetec(req: PriceTecRequest) {
         DataSource.addpricetec(req)
+    }
+
+    fun detail(idjob: Int) {
+        _workjob.value = DataSource.detail(idjob)
     }
 
     fun chekpricetec(idjob: Int) {
@@ -82,13 +106,25 @@ class DetailViewModel : ViewModel() {
         DataSource.confimjob(jobid)
 
     }
+
+    fun confimdate(req: DateSumRequest) {
+        DataSource.dateconfim(req)
+    }
+
     fun finishjob(jobid: Int) {
         DataSource.finishjob(jobid)
 
     }
+
     fun chekstatusjob(idjob: Int) {
         val request = DataSource.chekstatusjob(idjob)
         _statusjob.value = request.status
+
+    }
+
+    fun chekfinish(idjob: Int) {
+        val request = DataSource.chekfinish(idjob)
+        _finishjob.value = request
 
     }
 

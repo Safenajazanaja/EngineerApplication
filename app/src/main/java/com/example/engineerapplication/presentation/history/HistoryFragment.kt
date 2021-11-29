@@ -229,3 +229,4 @@ class HistoryFragment : BaseFragment(R.layout.fragment_history){
     }
 
 }
+

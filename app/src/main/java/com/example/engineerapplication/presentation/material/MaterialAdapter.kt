@@ -1,5 +1,6 @@
 package com.example.engineerapplication.presentation.material
 
+import android.app.Activity
 import android.content.Context
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +41,8 @@ class MaterialAdapter : BaseRecyclerView<SetViewMatialModel>() {
             tv_price_material.text = df.format(form).toString() + " บาท"
             sumall = sum
 
+
+
         } else {
             tv_name_material.text = data.name
             tv_Unitprice_material.text = data.price.toString()
@@ -54,13 +57,16 @@ class MaterialAdapter : BaseRecyclerView<SetViewMatialModel>() {
                 val add = AddRequest(orderid = idjob, materialid = ckk.id, qty = sumall)
                 DataSource.add(add)
                 Toasty.Config.getInstance().setTextSize(30)
-                Toasty.success(context,"บันทึกสำเร็จ")
+                Toasty.success(context,"บันทึกสำเร็จ").show()
             } else {
                 if (sumall != 0) {
                     val add = AddRequest(orderid = idjob, materialid = data.id, qty = sumall)
                     DataSource.addnew(add)
                     Toasty.Config.getInstance().setTextSize(30)
-                    Toasty.success(context,"บันทึกสำเร็จ")
+                    Toasty.success(context,"บันทึกสำเร็จ").show()
+                }else if (sumall ==0){
+                    Toasty.Config.getInstance().setTextSize(30)
+                    Toasty.success(context,"กรุณาเลือกจำนวนให้ถูกต้อง").show()
                 }
 
             }

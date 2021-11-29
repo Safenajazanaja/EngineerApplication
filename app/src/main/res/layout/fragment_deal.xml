@@ -34,22 +34,26 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center">
+        android:orientation="vertical"
+        android:layout_gravity="center">
 
         <Button
+            android:layout_gravity="center"
             android:id="@+id/bt_addmaterial"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_margin="20dp"
-            android:text="เพิ่มวัสดุก่อสร้าง" />
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:text="เพิ่มวัสดุก่อสร้าง"
+            android:drawableLeft="@drawable/brickwall"/>
 
         <Button
+            android:layout_gravity="center"
             android:id="@+id/bt_chekpay"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_margin="20dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:drawableLeft="@drawable/pay"
             android:text="ตรวจสอบการชำระเงิน" />
-
     </LinearLayout>
 
 

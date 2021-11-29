@@ -21,7 +21,10 @@ class LoginActivity : BaseActivity() {
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         viewModel.toast.observe(this, { str ->
-            Toast.makeText(baseContext, "$str", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(baseContext, "$str", Toast.LENGTH_SHORT).show()
+
+            Toasty.Config.getInstance().setTextSize(30)
+            Toasty.success(baseContext,"$str", Toast.LENGTH_SHORT).show()
         })
 
         viewModel.login.observe(this, { b ->

@@ -6,13 +6,13 @@ import com.example.engineerapplication.data.database.*
 import com.example.engineerapplication.data.map.*
 import com.example.engineerapplication.data.models.*
 import com.example.engineerapplication.data.request.*
-import com.example.engineerapplication.data.response.ChekStatusResponse
-import com.example.engineerapplication.data.response.ChekpricetecResponse
-import com.example.engineerapplication.data.response.LoginResponse
+import com.example.engineerapplication.data.response.*
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.joda.time.DateTime
 
 object DataSource {
+
     private const val TAG = "####"
 
     fun login(request: LoginRequest): LoginResponse {
@@ -216,6 +216,16 @@ object DataSource {
 
     }
 
+    fun updatepay(req: UpdatePayRequest) {
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            Orderl.update({ (Orderl.order_id eq req.orderid!!.toInt()) }) {
+                it[Orderl.pay_type] = req.payid.toString().toInt()
+            }
+        }
+
+    }
+
     fun addnew(req: AddRequest) {
         return transaction {
             addLogger(StdOutSqlLogger)
@@ -332,6 +342,36 @@ object DataSource {
         }
     }
 
+    fun detail(idjob: Int): DetailModel {
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            (Orderl innerJoin Time innerJoin Type_job innerJoin Status innerJoin Province innerJoin Amphur innerJoin District)
+                .slice(
+                    Orderl.order_id,
+                    Orderl.abode,
+                    Orderl.repair_list,
+                    Orderl.dateLong,
+                    Orderl.latitude,
+                    Orderl.longitude,
+                    Type_job.namejob,
+                    Time.time,
+                    Orderl.idtime,
+                    Status.status_name,
+                    Province.province_name,
+                    Amphur.amphur_name,
+                    District.district_name,
+                )
+                .select { Orderl.order_id eq idjob }
+                .andWhere { Orderl.status eq Status.status_id }
+                .andWhere { Orderl.province_id eq Province.province_id }
+                .andWhere { Orderl.district_id eq District.district_id }
+                .andWhere { Orderl.amphur_id eq Amphur.amphur_id }
+                .map { DetailMap.toDetailMap(it) }
+                .single()
+
+        }
+    }
+
 //    fun chektec2(req: ChekTec2): List<Technician1Model> {
 //        return transaction {
 //            addLogger(StdOutSqlLogger)
@@ -356,6 +396,19 @@ object DataSource {
                 )
                 .selectAll()
                 .map { TechnicianMap.toTechnician1(it) }
+        }
+    }
+
+    fun materlist(): List<ListMaterialModel> {
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            Material
+                .slice(
+                    Material.material_name,
+                    Material.price_material
+                )
+                .selectAll()
+                .map { ListMap.tolistmat(it) }
         }
     }
 
@@ -416,6 +469,25 @@ object DataSource {
         return response
     }
 
+    fun chekperiod(idjob: Int): ChekperiodResponse {
+        val response = ChekperiodResponse()
+        val result = transaction {
+            Orderl.slice(Orderl.period)
+                .select { Orderl.order_id eq idjob }
+                .map { it[Orderl.period] }
+                .single()
+        }
+
+        if (result == 0L) {
+            response.period = 0L
+        } else {
+            response.period = result
+        }
+        return response
+    }
+
+
+
 
     fun canceljob(idjob: Int) {
         return transaction {
@@ -437,10 +509,19 @@ object DataSource {
 
     }
 
+    fun dateconfim(req: DateSumRequest){
+        return transaction {
+            Orderl.update({Orderl.order_id eq req.id}){
+                it[Orderl.period]=req.date.toLong()
+            }
+        }
+    }
+
     fun finishjob(idjob: Int) {
         return transaction {
             Orderl.update({ Orderl.order_id eq idjob }) {
                 it[Orderl.status] = 4
+                it[Orderl.date_end] = DateTime.now().millis
             }
         }
 
@@ -453,10 +534,10 @@ object DataSource {
             addLogger(StdOutSqlLogger)
             Orderl
                 .slice(
-                    Orderl.status
+                    Orderl.pay_type
                 )
                 .select { Orderl.order_id eq idjob }
-                .map { it[Orderl.status] }
+                .map { it[Orderl.pay_type] }
                 .single()
         }
         req.status = result
@@ -470,6 +551,64 @@ object DataSource {
                 it[Orderl.id_technician] = req.id_tec
                 it[Orderl.status] = 2
             }
+        }
+    }
+
+    fun addmaterial(req: AddMaterialRequest): AddResponse {
+        val res = AddResponse()
+        val result = transaction {
+            addLogger(StdOutSqlLogger)
+            Material.select {
+                Material.material_name eq req.materialname
+            }.count().toInt()
+        }
+        if (result == 1) {
+            res.messageval = "ชื่อวัสดุก่อสร้างซ้ำ"
+            res.success = false
+        } else {
+            transaction {
+                Material.insert {
+                    it[Material.material_name] = req.materialname
+                    it[Material.price_material] = req.price.toInt()
+                }
+            }
+            res.messageval = "บันทึกข้อมูลเสร็จสิ้น"
+            res.success = true
+        }
+        return res
+
+    }
+
+    fun chekpay(): List<HistoryModel> {
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            (Orderl innerJoin Status innerJoin Type_job)
+                .slice(
+                    Orderl.abode,
+                    Orderl.order_id,
+                    Orderl.repair_list,
+                    Orderl.dateLong,
+                    Orderl.price, //add
+                    Status.status_name,
+                    Type_job.namejob
+                )
+                .select { Orderl.pay_type eq 1 }
+                .map { HistoryMap.toHistory(it) }
+
+
+        }
+    }
+
+    fun chekfinish(idjob: Int): ChekfinishModel {
+        return transaction {
+            addLogger(StdOutSqlLogger)
+            (Orderl)
+                .slice(
+                    Orderl.status
+                )
+                .select { Orderl.order_id eq idjob }
+                .map { ChekFinishMap.toChekFinishMap(it) }
+                .single()
         }
     }
 

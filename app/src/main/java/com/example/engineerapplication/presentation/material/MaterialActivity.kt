@@ -26,7 +26,7 @@ class MaterialActivity : BaseActivity() {
                 val preferences = getSharedPreferences("fileidjob", Context.MODE_PRIVATE)
                 preferences.edit().clear()
                 preferences.edit().putInt("id",idjob).apply()
-
+                Log.d(TAG, "repair98: ${preferences}")
 
             }
             adt.setList(mat)
